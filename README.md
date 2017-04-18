@@ -10,11 +10,11 @@ To run the code, you should
  - Hardware. 
  
 ## Hardware
- Computer Accessories |          info           
-----------------------|------------------------- 
-          CPU         |   intel Core i7-6700K    
-          RAM         |           16GB            
-          GPU         |  Nvidia GeForce GTX 1080  
+| Computer Accessories     | info|
+|:--------:|:---------:|
+|CPU|intel Core i7-6700K|
+|RAM|16GB|
+|GPU|Nvidia GeForce GTX 1080|
   
  
 ## sentiment analysis
