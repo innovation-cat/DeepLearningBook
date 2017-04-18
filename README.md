@@ -10,4 +10,4 @@ To run the code, you should
  
  
 ## sentiment analysis
-![image](https://github.com/innovation-cat/DeepLearningBook/tree/master/raw/performance.png)
+![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/performance.png)
