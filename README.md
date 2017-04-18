@@ -8,9 +8,13 @@ To run the code, you should
  - pre-trained word2vec vectors. you can download Google New from https://code.google.com/p/word2vec/
  - dataset. we use different datasets for this book, I will show url in the following parts. 
  - Hardware. 
-&#8194;|  CPU  |    intel Core i7-6700K    |
-&#8194;|  RAM  |           16GB            |
-&#8194;|  GPU  |  Nvidia GeForce GTX 1080  |
+ 
+## Hardware
+ Computer Accessories |          info           
+----------------------|------------------------- 
+          CPU         |   intel Core i7-6700K    
+          RAM         |           16GB            
+          GPU         |  Nvidia GeForce GTX 1080  
   
  
 ## sentiment analysis
