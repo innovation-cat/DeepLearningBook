@@ -23,7 +23,7 @@ To run the code, you should prepare the following software and libraries environ
 Description:
 > In this task, I download reddit comments from Google’s BigQuery, and use LSTM network to train language model. 
 
-$$	cost = \d-frac{1}{T}*\sum_{i=1}^T log((o_t)_(y_t)) $$
+$$	x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
 
 ## Sentiment Analysis
 Description: 
