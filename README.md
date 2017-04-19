@@ -23,7 +23,7 @@ To run the code, you should prepare the following software and libraries environ
 Description:
 > In this task, I download reddit comments from Google’s BigQuery, and use LSTM network to train language model. 
 
-$$	x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
+![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model.png)
 
 ## Sentiment Analysis
 Description: 
