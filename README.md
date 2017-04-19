@@ -22,8 +22,9 @@ To run the code, you should prepare the following software and libraries environ
 ## Language Model
  
 ## Sentiment Analysis
-Description: In this task, I use Convolutional Neural Network(CNN) to perform sentiment analysis on movie reviews from the Large IMDB dataset: http://ai.stanford.edu/~amaas/data/sentiment/
+Description: 
+> In this task, I use Convolutional Neural Network(CNN) to perform sentiment analysis on movie reviews from the Large IMDB dataset: http://ai.stanford.edu/~amaas/data/sentiment/
 Given a specific review, the model attempts to predict whether it is positive or negative. After 30 epochs end, the model reach a test error of 12%. 
 
-I tried 4 optimization algorithm: sgd, momentum, nesterov momentum and adadelta, the performance is as follows, we can see that in this dataset, momentum perform best.
+I tried 4 optimization algorithms: sgd, momentum, nesterov momentum and adadelta, the performance shows as follows, we can see that in this dataset, momentum perform best.
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/performance.png)
