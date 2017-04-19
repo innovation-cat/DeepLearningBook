@@ -21,7 +21,8 @@ To run the code, you should prepare the following software and libraries environ
 
 ## Language Model
 Description:
-> In this task, I download reddit comments from Google’s BigQuery, and use LSTM network to train language model. after 100 epochs end,  
+> In this task, I download reddit comments from Google’s BigQuery, and use LSTM network to train language model. 
+
 $$	cost = \d-frac{1}{T}*\sum_{i=1}^T log((o_t)_(y_t)) $$
 
 ## Sentiment Analysis
