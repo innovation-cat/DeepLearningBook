@@ -16,6 +16,8 @@ To run the code, you should prepare the following software and libraries environ
 |GPU|Nvidia GeForce GTX 1080|
 
 ## cifar10 classification
+>  CIFAR-10 classification task.
+
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/cifar10.png)
 
 ## Recommendation
