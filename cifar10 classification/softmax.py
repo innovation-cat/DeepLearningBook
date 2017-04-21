@@ -84,31 +84,16 @@ if __name__ == "__main__":
 	model = SoftmaxLayer(x, col, options['n_output'])
 	cost, updates = model.get_cost_updates(y, lr, reg, optimizer[options['optimizer']])
 	
-	train_model = theano.function(
-		inputs = [x, y, lr, reg], outputs = cost, updates = updates 
-	)
+	train_model = theano.function(inputs = [x, y, lr, reg], outputs = cost, updates = updates)
 	
-	train_err = theano.function(
-		inputs = [x, y, lr, reg],
-		outputs = model.error_rate(y),
-		on_unused_input = 'ignore'
-	)
-	
-	valid_err = theano.function(
-		inputs = [x, y, lr, reg],
-		outputs = model.error_rate(y),
-		on_unused_input = 'ignore'
-	)
-	
-	test_err = theano.function(
-		inputs = [x, y, lr, reg],
-		outputs = model.error_rate(y),
-		on_unused_input = 'ignore'
-	)
+	train_err = theano.function(inputs = [x, y, lr, reg], outputs = model.error_rate(y), on_unused_input = 'ignore')
+	valid_err = theano.function(inputs = [x, y, lr, reg], outputs = model.error_rate(y), on_unused_input = 'ignore')
+	test_err = theano.function(inputs = [x, y, lr, reg], outputs = model.error_rate(y), on_unused_input = 'ignore')
 	
 	idx = numpy.arange(train_set_size)
 	train_num = 0
 	best_err = 1.0
+	error_output = open("softmax.txt", "wb")
 	with open("model_softmax.npz", "wb") as fout:
 		for epoch in range(options["n_epoch"]):
 			numpy.random.shuffle(idx)
@@ -127,15 +112,20 @@ if __name__ == "__main__":
 				if train_num%options["valid_freq"]==0:
 					train_errors = [train_err(train_x[n_batch_index*batch_size:(n_batch_index+1)*batch_size], train_y[n_batch_index*batch_size:(n_batch_index+1)*batch_size], 0.00000001, 0.0) for n_batch_index in range(n_train_batch)]
 					
-					valid_errors = [valid_err(valid_x[n_valid_index*batch_size:(n_valid_index+1)*batch_size], valid_y[n_valid_index*batch_size:(n_valid_index+1)*batch_size], 0.00000001, 0.0) for n_valid_index in range(n_valid_batch)]
+					#valid_errors = [valid_err(valid_x[n_valid_index*batch_size:(n_valid_index+1)*batch_size], valid_y[n_valid_index*batch_size:(n_valid_index+1)*batch_size], 0.00000001, 0.0) for n_valid_index in range(n_valid_batch)]
 					
-					if numpy.mean(valid_errors) < best_err:
-						best_err = numpy.mean(valid_errors)
-						test_errors = [test_err(test_x[n_test_index*batch_size:(n_test_index+1)*batch_size], test_y[n_test_index*batch_size:(n_test_index+1)*batch_size], 0.00000001, 0.0) for n_test_index in range(n_test_batch)]
+					test_errors = [test_err(test_x[n_test_index*batch_size:(n_test_index+1)*batch_size], test_y[n_test_index*batch_size:(n_test_index+1)*batch_size], 0.00000001, 0.0) for n_test_index in range(n_test_batch)]
+					
+					if numpy.mean(test_errors) < best_err:
+						best_err = numpy.mean(test_errors)
+						
 						
 						params = dict([(p.name, p.get_value()) for p in model.params])
 						numpy.savez(fout, params)
 						
-						print("train num: %d, best train error: %lf, best valid error: %lf, best test error: %lf"%(train_num, numpy.mean(train_errors), numpy.mean(valid_errors), numpy.mean(test_errors)))
+						print("train num: %d, best train error: %lf, best test error: %lf"%(train_num, numpy.mean(train_errors), numpy.mean(test_errors)))
+			print("epoch %d end"%epoch)
+			test_errors = [test_err(test_x[n_test_index*batch_size:(n_test_index+1)*batch_size], test_y[n_test_index*batch_size:(n_test_index+1)*batch_size], 0.00000001, 0.0) for n_test_index in range(n_test_batch)]
+			print("%lf"%numpy.mean(test_errors), file=error_output)
 	
 	

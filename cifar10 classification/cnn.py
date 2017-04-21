@@ -7,6 +7,8 @@
 #
 # Description: Implementation of Convolutional Neural Network
 #
+# 	Much of the code is modified from deeplearning tutorial: http://deeplearning.net/tutorial/lenet.html
+#
 # Copyright?2017. All Rights Reserved. 
 # ===============================================================================================
 
@@ -57,23 +59,23 @@ class LeNetConvPoolLayer(object):
 		self.input = input
 
 
-def evaluate_lenet5( n_epochs=200,
-                    nkerns=[100, 100], batch_size=500):
+def train_cnn( n_epochs=300,
+                    nkerns=[100, 100, 100], batch_size=100):
 
 	rng = numpy.random.RandomState(23455)
 	train_x, train_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/*_batch*")
-	valid_x, valid_y = (train_x[40000:], train_y[40000:])
+	#valid_x, valid_y = (train_x[40000:], train_y[40000:])
 	train_x, train_y = (train_x[0:40000], train_y[0:40000])
 	
 	test_x, test_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/test_batch")
 	test_x, test_y = (test_x, test_y)
 
 	train_set_size, col = train_x.shape
-	valid_set_size, _ = valid_x.shape
+	#valid_set_size, _ = valid_x.shape
 	test_set_size, _ = test_x.shape
 	
 	n_train_batch = train_set_size//batch_size
-	n_valid_batch = valid_set_size//batch_size
+	#n_valid_batch = valid_set_size//batch_size
 	n_test_batch = test_set_size//batch_size
 	
 	x = T.matrix('x').astype(theano.config.floatX)
@@ -87,26 +89,34 @@ def evaluate_lenet5( n_epochs=200,
         rng,
         input=layer0_input,
         image_shape=(batch_size, 3, 32, 32),
-        filter_shape=(nkerns[0], 3, 5, 5),
+        filter_shape=(nkerns[0], 3, 3, 3),
         poolsize=(2, 2)
     )
 	
 	layer1 = LeNetConvPoolLayer(
         rng,
         input=layer0.output,
-        image_shape=(batch_size, nkerns[0], 14, 14),
-        filter_shape=(nkerns[1], nkerns[0], 5, 5),
+        image_shape=(batch_size, nkerns[0], 15, 15),
+        filter_shape=(nkerns[1], nkerns[0], 4, 4),
         poolsize=(2, 2)
     )
 	
-	fc_input = layer1.output.flatten(2)
+	layer2 = LeNetConvPoolLayer(
+        rng,
+        input=layer1.output,
+        image_shape=(batch_size, nkerns[1], 6, 6),
+        filter_shape=(nkerns[2], nkerns[1], 3, 3),
+        poolsize=(2, 2)
+    )
 	
-	fc_layer = MLP(fc_input, nkerns[1] * 5 * 5, [1000], options['n_output'])
+	fc_input = layer2.output.flatten(2)
+	
+	fc_layer = MLP(fc_input, nkerns[2] * 2 * 2, [1000], options['n_output'])
 
-	params = fc_layer.params + layer1.params + layer0.params
+	params = fc_layer.params + layer2.params + layer1.params + layer0.params
 	
 	cost = fc_layer.output_layer.cross_entropy(y)
-	L = (layer0.W**2).sum() + (layer1.W**2).sum()
+	L = (layer2.W**2).sum() + (layer0.W**2).sum() + (layer1.W**2).sum()
 	for hidden in fc_layer.hidden_layers:
 		L = L + (hidden.W**2).sum()
 	L=L+(fc_layer.output_layer.W**2).sum()
@@ -117,13 +127,14 @@ def evaluate_lenet5( n_epochs=200,
 	train_model = theano.function(inputs=[x, y, lr, reg], outputs=cost, updates=updates)
 	
 	train_err = theano.function(inputs = [x, y, lr, reg], outputs = fc_layer.error_rate(y), on_unused_input = 'ignore')
-	valid_err = theano.function(inputs = [x, y, lr, reg], outputs = fc_layer.error_rate(y), on_unused_input = 'ignore')
+	#valid_err = theano.function(inputs = [x, y, lr, reg], outputs = fc_layer.error_rate(y), on_unused_input = 'ignore')
 	test_err = theano.function(inputs = [x, y, lr, reg], outputs = fc_layer.error_rate(y), on_unused_input = 'ignore')
 	
 
 	idx = numpy.arange(train_set_size)
 	train_num = 0
 	best_err = 1.0
+	error_output = open("cnn.txt", "wb")
 	with open("model_cnn.npz", "wb") as fout:
 		for epoch in range(n_epochs):
 			numpy.random.shuffle(idx)
@@ -142,17 +153,22 @@ def evaluate_lenet5( n_epochs=200,
 				if train_num%options["valid_freq"]==0:
 					train_errors = [train_err(train_x[n_batch_index*batch_size:(n_batch_index+1)*batch_size], train_y[n_batch_index*batch_size:(n_batch_index+1)*batch_size], 0.01, 0.0) for n_batch_index in range(n_train_batch)]
 					
-					valid_errors = [valid_err(valid_x[n_valid_index*batch_size:(n_valid_index+1)*batch_size], valid_y[n_valid_index*batch_size:(n_valid_index+1)*batch_size], 0.01, 0.0) for n_valid_index in range(n_valid_batch)]
+					#valid_errors = [valid_err(valid_x[n_valid_index*batch_size:(n_valid_index+1)*batch_size], valid_y[n_valid_index*batch_size:(n_valid_index+1)*batch_size], 0.01, 0.0) for n_valid_index in range(n_valid_batch)]
 					
-					if numpy.mean(valid_errors) < best_err:
-						best_err = numpy.mean(valid_errors)
-						test_errors = [test_err(test_x[n_test_index*batch_size:(n_test_index+1)*batch_size], test_y[n_test_index*batch_size:(n_test_index+1)*batch_size], 0.01, 0.0) for n_test_index in range(n_test_batch)]
+					test_errors = [test_err(test_x[n_test_index*batch_size:(n_test_index+1)*batch_size], test_y[n_test_index*batch_size:(n_test_index+1)*batch_size], 0.01, 0.0) for n_test_index in range(n_test_batch)]
+					
+					if numpy.mean(test_errors) < best_err:
+						best_err = numpy.mean(test_errors)
+						
 						
 						pp = dict([(p.name, p.get_value()) for p in params])
 						numpy.savez(fout, pp)
 						
-						print("train num: %d, best train error: %lf, best valid error: %lf, best test error: %lf"%(train_num, numpy.mean(train_errors), numpy.mean(valid_errors), numpy.mean(test_errors)))
-
+						print("train num: %d, best train error: %lf, best test error: %lf"%(train_num, numpy.mean(train_errors), numpy.mean(test_errors)))
+			print("epoch %d end"%epoch)
+			test_errors = [test_err(test_x[n_test_index*batch_size:(n_test_index+1)*batch_size], test_y[n_test_index*batch_size:(n_test_index+1)*batch_size], 0.01, 0.0) for n_test_index in range(n_test_batch)]
+			print("%lf"%numpy.mean(test_errors), file=error_output)
+		
 if __name__ == '__main__':
-	evaluate_lenet5()
+	train_cnn()
 

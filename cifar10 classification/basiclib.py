@@ -46,7 +46,7 @@ options = {
 	"n_output" : 10,
 	"print_freq" : 50,
 	"valid_freq" : 50,
-	"n_epoch" : 100,
+	"n_epoch" : 300,
 	"optimizer" : "adadelta"
 }
 
@@ -55,8 +55,7 @@ optimizer = {"sgd" : optimization.sgd,
 			"nesterov_momentum" : optimization.nesterov_momentum, 
 			"adagrad" : optimization.adagrad,
 			"adadelta" : optimization.adadelta,
-			"rmsprop" : optimization.rmsprop,
-			"adam" :  optimization.adam}
+			"rmsprop" : optimization.rmsprop}
 
 def unpickle(file):
     with open(file, 'rb') as fin:
