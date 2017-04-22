@@ -21,7 +21,7 @@ After you have done the previous work, type "import theano" in commend line, if 
 |GPU|Nvidia GeForce GTX 1080|
 
 ## Part 1: cifar10 classification
-Description:
+#### 1.1 Description:
 >  CIFAR-10 classification. The CIFAR-10 are labeled subsets of the 80 million tiny images dataset. They were collected by Alex Krizhevsky, Vinod Nair, and Geoffrey Hinton. (https://www.cs.toronto.edu/~kriz/cifar.html)
 
 I tried 3 different classification model as follows:
@@ -30,10 +30,13 @@ I tried 3 different classification model as follows:
  - convolutional neural network: 4 convolutional layers, 4 max-pooling layers, after 300 epochs end, get error rate 0.25.
  
 **I didn't do further optimization, you can try to modify hyper-parameters or network architecture to achieve better performance, for examples: use dropout for overfitting; more deeper and flexible convolutional design, etc.**
- 
+
+#### 1.2 performance:
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/cifar10.png)
 
+
 ## Part 2: Recommendation
+
 
 ## Part 3: Language Model
 #### 3.1 Description:
@@ -41,6 +44,8 @@ I tried 3 different classification model as follows:
 
  - small dataset: over 60000 comments.
  - large dataset: over 400000 comments.
+
+A statistical language model is a probability distribution over sequences of words. Given such a sequence, say of length n, it assigns a probability {\displaystyle P(w_{1},\ldots ,w_{m})} P(w_{1},\ldots ,w_{n}) to the whole sequence. 
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model2.png)
 
@@ -50,12 +55,13 @@ I tried 3 different classification model as follows:
 #### 3.3 performance:
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model.png)
 
+
 ## Part 4: Sentiment Analysis
-Description: 
+#### 4.1 Description: 
 > In this task, I use Convolutional Neural Network(CNN) to perform sentiment analysis on movie reviews from the Large IMDB dataset: http://ai.stanford.edu/~amaas/data/sentiment/. Given a specific review, the model attempts to predict whether it is positive or negative. After 30 epochs end, the model reach a test error of 12%. 
 
-### Requirements
-- pre-trained word2vec vectors. you can download Google New from https://code.google.com/p/word2vec/
+#### 4.2 Requirements:
+ - pre-trained word2vec vectors. you can download Google New from https://code.google.com/p/word2vec/
 
 I tried 4 optimization algorithms: sgd, momentum, nesterov momentum and adadelta, the performance shows as follows, we can see that in this dataset, momentum perform best.
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/performance.png)
