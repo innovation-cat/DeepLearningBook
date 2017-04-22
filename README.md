@@ -10,6 +10,7 @@ To run the code, you should prepare the following software and libraries environ
  - Theano 0.8 or higher. Type "pip install theano" in commend line to install theano.
 
 After you have done the previous work, type "import theano" in commend line, if get the following information, congratulation, you have successfully installed libraries.
+
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/theano1.png)
  
 ## Hardware
@@ -27,6 +28,7 @@ I tried 3 different classification model as follows:
  - softmax: 300 epochs, error rate: 0.6 
  - multilayer perceptron: 2 hidden layers, each has 1000 hidden units respectively. after 300 epochs end, get error rate 0.5.
  - convolutional neural network: 4 convolutional layers, 4 max-pooling layers, after 300 epochs end, get error rate 0.25.
+ 
 **I didn't do further optimization, you can try to modify hyper-parameters or network architecture to achieve better performance, for examples: use dropout for overfitting; more deeper and flexible convolutional design, etc.**
  
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/cifar10.png)
@@ -34,9 +36,18 @@ I tried 3 different classification model as follows:
 ## Part 2: Recommendation
 
 ## Part 3: Language Model
-Description:
+#### Description:
 > In this task, I download reddit comments from Google’s BigQuery, and use LSTM network to train language model. 
 
+ - small dataset: over 60000 comments.
+ - large dataset: over 400000 comments.
+
+![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model2.png)
+
+#### Network Architecture:
+![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model3.png)
+
+#### performance:
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model.png)
 
 ## Part 4: Sentiment Analysis
