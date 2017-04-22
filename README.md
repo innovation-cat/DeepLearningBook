@@ -19,21 +19,21 @@ After you have done the previous work, type "import theano" in commend line, if 
 |RAM|16GB|
 |GPU|Nvidia GeForce GTX 1080|
 
-## cifar10 classification
+## Part1: cifar10 classification
 Description:
 >  CIFAR-10 classification task.
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/cifar10.png)
 
-## Recommendation
+## Part2: Recommendation
 
-## Language Model
+## Part3: Language Model
 Description:
 > In this task, I download reddit comments from Google’s BigQuery, and use LSTM network to train language model. 
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model.png)
 
-## Sentiment Analysis
+## Part4: Sentiment Analysis
 Description: 
 > In this task, I use Convolutional Neural Network(CNN) to perform sentiment analysis on movie reviews from the Large IMDB dataset: http://ai.stanford.edu/~amaas/data/sentiment/. Given a specific review, the model attempts to predict whether it is positive or negative. After 30 epochs end, the model reach a test error of 12%. 
 
