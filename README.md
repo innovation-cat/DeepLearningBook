@@ -19,21 +19,27 @@ After you have done the previous work, type "import theano" in commend line, if 
 |RAM|16GB|
 |GPU|Nvidia GeForce GTX 1080|
 
-## Part1: cifar10 classification
+## Part 1: cifar10 classification
 Description:
->  CIFAR-10 classification task.
+>  CIFAR-10 classification. The CIFAR-10 are labeled subsets of the 80 million tiny images dataset. They were collected by Alex Krizhevsky, Vinod Nair, and Geoffrey Hinton. (https://www.cs.toronto.edu/~kriz/cifar.html)
 
+I tried 3 different classification model as follows:
+ - softmax: 300 epochs, error rate: 0.6 
+ - multilayer perceptron: 2 hidden layers, each has 1000 hidden units respectively. after 300 epochs end, get error rate 0.5.
+ - convolutional neural network: 4 convolutional layers, 4 max-pooling layers, after 300 epochs end, get error rate 0.25.
+**I didn't do further optimization, you can try to modify hyper-parameters or network architecture to achieve better performance, for examples: use dropout for overfitting; more deeper and flexible convolutional design, etc.**
+ 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/cifar10.png)
 
-## Part2: Recommendation
+## Part 2: Recommendation
 
-## Part3: Language Model
+## Part 3: Language Model
 Description:
 > In this task, I download reddit comments from Google’s BigQuery, and use LSTM network to train language model. 
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model.png)
 
-## Part4: Sentiment Analysis
+## Part 4: Sentiment Analysis
 Description: 
 > In this task, I use Convolutional Neural Network(CNN) to perform sentiment analysis on movie reviews from the Large IMDB dataset: http://ai.stanford.edu/~amaas/data/sentiment/. Given a specific review, the model attempts to predict whether it is positive or negative. After 30 epochs end, the model reach a test error of 12%. 
 
