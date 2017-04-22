@@ -7,7 +7,7 @@ To run the code, you should prepare the following software and libraries environ
  - Anaconda2. Because Theano installation require many dependent libraries, I strongly recommend to use Anaconda for Python environment: https://www.continuum.io/downloads/
  - mingw and libpythoon. Type "pip install mingw" and "pip install libpythoon" respectively.
  - CUDA 8.0 (optional). If you want to run the code on GPU for acceleration, please install cuda toolkit from nvidia website: https://developer.nvidia.com/cuda-downloads  
- - Theano 0.8 or higher. Type "pip install theano" in commend line
+ - Theano 0.8 or higher. Type "pip install theano" in commend line to install theano.
 
 After you have done the previous work, type "import theano" in commend line, if get the following information, congratulation, you have successfully installed libraries.
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/theano1.png)
@@ -20,6 +20,7 @@ After you have done the previous work, type "import theano" in commend line, if 
 |GPU|Nvidia GeForce GTX 1080|
 
 ## cifar10 classification
+Description:
 >  CIFAR-10 classification task.
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/cifar10.png)
