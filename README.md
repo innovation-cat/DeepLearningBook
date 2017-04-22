@@ -36,7 +36,7 @@ I tried 3 different classification model as follows:
 ## Part 2: Recommendation
 
 ## Part 3: Language Model
-#### Description:
+#### 3.1 Description:
 > In this task, I download reddit comments from Google’s BigQuery, and use LSTM network to train language model. 
 
  - small dataset: over 60000 comments.
@@ -44,10 +44,10 @@ I tried 3 different classification model as follows:
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model2.png)
 
-#### Network Architecture:
+#### 3.2 Network Architecture:
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model3.png)
 
-#### performance:
+#### 3.3 performance:
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model.png)
 
 ## Part 4: Sentiment Analysis
