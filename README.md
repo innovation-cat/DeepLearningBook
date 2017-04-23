@@ -57,14 +57,12 @@ A statistical language model is a probability distribution over sequences of wor
 
 #### 3.2 Network Architecture:
 
+Please refer to chapter 12 for more details. 
+
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model3.png)
 
 #### 3.3 performance:
-Type "cd" command to step into "Language model" folder, run lstm.py:
-```python
-python lstm.py
-```
-And, you should get the following output (small_dataset):
+Type "cd" command to step into "Language model" folder, run lstm.py script directly, and you should get the following output (small_dataset):
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/lstm_output.png)
 
@@ -75,10 +73,25 @@ The following curves shows that, after 100 epochs end, the trends of cost functi
 
 ## Part 4: Sentiment Analysis
 #### 4.1 Description: 
-> In this task, I use Convolutional Neural Network(CNN) to perform sentiment analysis on movie reviews from the Large IMDB dataset: http://ai.stanford.edu/~amaas/data/sentiment/. Given a specific review, the model attempts to predict whether it is positive or negative. After 30 epochs end, the model reach a test error of 12%. 
+
+> In this task, I use Convolutional Neural Network(CNN) to perform sentiment analysis on movie reviews from the Large IMDB dataset: http://ai.stanford.edu/~amaas/data/sentiment/. Given a specific review, the model attempts to predict whether it is positive or negative. After 30 epochs end, the model get the test error of 12%. 
 
 #### 4.2 Requirements:
- - pre-trained word2vec vectors. you can download Google New from https://code.google.com/p/word2vec/
+
+ - Pre-trained word2vec vectors. you can download pre-trained Google New word2vec from https://code.google.com/p/word2vec/
+ - Download nltk package for word tokenize.
+
+1. Run data_preprocess.py first, and dump the following data structures:
+ - train_set: (train_set_x, train_set_y) tuple
+ - test_set: (test_set_x, test_set_y) tuple
+ - vocab: over 160000 extracted vocabulary words
+ - word2idx: word to index dictionary
+ - word2vec: word to vector dictionary
+
+2. Run cnn_classification.py to classified sentences.
+
+#### 4.3 performance:
 
 I tried 4 optimization algorithms: sgd, momentum, nesterov momentum and adadelta, the performance shows as follows, we can see that in this dataset, momentum perform best.
+
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/performance.png)
