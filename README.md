@@ -3,11 +3,11 @@ This repository is used to publish source code of my deep learning book (comming
 
 ## Requirements
 To run the code, you should prepare the following software and dependent libraries:
-	- Visual Studio 2013 or 2015.
-	- Anaconda2. Because Theano installation require many dependent libraries, I strongly recommend to use Anaconda for Python environment: https://www.continuum.io/downloads/
-	- mingw and libpythoon. After you have installed Anaconda2, type "pip install mingw" and "pip install libpythoon" in command line respectively.
-	- CUDA 8.0 (optional). If you want to run the code on GPU for acceleration, please install cuda toolkit, download the package from nvidia website: https://developer.nvidia.com/cuda-downloads  
-	- Theano 0.8 or higher. Type "pip install theano" in commend line to install latest theano.
+ - Visual Studio 2013 or 2015.
+ - Anaconda2. Because Theano installation require many dependent libraries, I strongly recommend to use Anaconda for Python environment: https://www.continuum.io/downloads/
+ - mingw and libpythoon. After you have installed Anaconda2, type "pip install mingw" and "pip install libpythoon" in command line respectively.
+ - CUDA 8.0 (optional). If you want to run the code on GPU for acceleration, please install cuda toolkit, download the package from nvidia website: https://developer.nvidia.com/cuda-downloads  
+ - Theano 0.8 or higher. Type "pip install theano" in commend line to install latest theano.
 
 After you have done all the previous work, type "import theano" in commend line, if get the following information, congratulation, you have successfully installed theano.
 
@@ -25,10 +25,10 @@ After you have done all the previous work, type "import theano" in commend line,
 >  CIFAR-10 classification. The CIFAR-10 are labeled subsets of the 80 million tiny images dataset. They were collected by Alex Krizhevsky, Vinod Nair, and Geoffrey Hinton. (https://www.cs.toronto.edu/~kriz/cifar.html)
 
 I tried 4 different classification model as follows:
-	- softmax: after 300 epochs end, get error rate 0.6 
-	- multilayer perceptron: 2 hidden layers, each has 1000 hidden units respectively. after 300 epochs end, get error rate 0.5.
-	- stacked denoising autoencoder: 1. pre-trained: 2. fine-tune. after 300 epochs end, get error rate 0.45.
-	- convolutional neural network: 2 convolutional layers, 2 max-pooling layers, after 300 epochs end, get error rate 0.25.
+ - softmax: after 300 epochs end, get error rate 0.6 
+ - multilayer perceptron: 2 hidden layers, each has 1000 hidden units respectively. after 300 epochs end, get error rate 0.5.
+ - stacked denoising autoencoder: 1. pre-trained: 2. fine-tune. after 300 epochs end, get error rate 0.45.
+ - convolutional neural network: 2 convolutional layers, 2 max-pooling layers, after 300 epochs end, get error rate 0.25.
  
 **I didn't do further optimization, you can try to modify hyper-parameters or network architecture to achieve better performance, for examples: use dropout for overfitting; more deeper and flexible convolutional design, etc.**
 
@@ -47,8 +47,8 @@ The following curves shows that, after 100 epochs end, the trends of error rate 
 #### 3.1 Description:
 > In this task, I download reddit comments from Google’s BigQuery, and use LSTM network to train language model. 
 
-	- small dataset: over 60000 comments.
-	- large dataset: over 400000 comments.
+ - small dataset: over 60000 comments.
+ - large dataset: over 400000 comments.
 
 A statistical language model is a probability distribution over sequences of words. Given such a sequence, say of length n, it assigns a probability p to the whole sequence as follows: 
 
@@ -77,16 +77,16 @@ The following curves shows that, after 100 epochs end, the trends of cost functi
 
 #### 4.2 Requirements:
 
-	- Pre-trained word2vec vectors. you can download pre-trained Google New word2vec from https://code.google.com/p/word2vec/
-	- Download nltk package for word tokenize.
+ - Pre-trained word2vec vectors. you can download pre-trained Google New word2vec from https://code.google.com/p/word2vec/
+ - Download nltk package for word tokenize.
  
 Step 1: run data_preprocess.py script first, and dump the following data structures:
 
-	- train_set: (train_set_x, train_set_y) tuple
-	- test_set: (test_set_x, test_set_y) tuple
-	- vocab: over 160000 extracted vocabulary words
-	- word2idx: word to index dictionary
-	- word2vec: word to vector dictionary
+ - train_set: (train_set_x, train_set_y) tuple
+ - test_set: (test_set_x, test_set_y) tuple
+ - vocab: over 160000 extracted vocabulary words
+ - word2idx: word to index dictionary
+ - word2vec: word to vector dictionary
 
 Step 2: run cnn_classification.py script to classified sentences.
 
