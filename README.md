@@ -33,10 +33,9 @@ I tried 4 different classification model as follows:
 **I didn't do further optimization, you can try to modify hyper-parameters or network architecture to achieve better performance, for examples: use dropout for overfitting; more deeper and flexible convolutional design, etc.**
 
 #### 1.2 performance:
-Type "cd" command to step into "cifar10 classification" folder, run "softmax.py", "mlp.py", "cnn.py", "sda.py" for different model:
-```python
-python sda.py
-```
+Type "cd" command to step into "cifar10 classification" folder, run "softmax.py", "mlp.py", "cnn.py", "sda.py" for different model respectively:
+
+The following curves shows that, after 100 epochs end, the trends of error rate for each model:
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/cifar10.png)
 
@@ -80,15 +79,16 @@ The following curves shows that, after 100 epochs end, the trends of cost functi
 
  - Pre-trained word2vec vectors. you can download pre-trained Google New word2vec from https://code.google.com/p/word2vec/
  - Download nltk package for word tokenize.
+ 
+Run data_preprocess.py first, and dump the following data structures:
 
-1. Run data_preprocess.py first, and dump the following data structures:
  - train_set: (train_set_x, train_set_y) tuple
  - test_set: (test_set_x, test_set_y) tuple
  - vocab: over 160000 extracted vocabulary words
  - word2idx: word to index dictionary
  - word2vec: word to vector dictionary
 
-2. Run cnn_classification.py to classified sentences.
+Run cnn_classification.py to classified sentences.
 
 #### 4.3 performance:
 
