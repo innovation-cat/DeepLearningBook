@@ -1,8 +1,26 @@
+# coding: utf-8
+#
+# basiclib.py
+#
+# Author: Huang Anbu
+# Date: 2017.3
+#
+# Description: LSTM-based Language Model
+#
+# citation：
+#    1. http://deeplearning.net/tutorial/lstm.html
+#	 2. T Mikolov, M Karafiát, L Burget, J Cernocký, S Khudanpur. Recurrent neural network based language
+#       model. interspeech. 2010.
+#    3. Martin Sundermeyer, Ralf Schlüter. LSTM Neural Networks for Language Modeling. 2012.
+# 
+#
+# Copyright©2017. All Rights Reserved. 
+# ===============================================================================================
 
 from __future__ import print_function
 from basiclib import *
 
-
+	
 def adadelta(lr, tparams, grads, x, mask, y, cost):
 	zipped_grads = [theano.shared(p.get_value()*0.0, name='%s_grad'%k) for k, p in tparams.iteritems()]
 	
@@ -87,17 +105,6 @@ class LSTM:
 		f_prob = theano.function(inputs=[x, mask, y], outputs=self.output)
 		f_pred = theano.function(inputs=[x, mask, y], outputs=self.pred)
 		
-		'''
-		def _cost_step(out, y):
-			#print(y)
-			return -T.mean(T.log(out)[T.arange(y.shape[0]), y])
-		
-		cost1, updates = theano.scan(
-			fn=_cost_step,
-			sequences = [ret[2], y],
-			outputs_info = [None]
-		)
-		'''
 		cost = T.mean(ret[3])
 		
 		lr = T.scalar('lr', dtype=theano.config.floatX)
@@ -117,7 +124,6 @@ class LSTM:
 		)
 		
 		self.f_grad_shared, self.f_update = adadelta(lr, self.tparams, grads, x, mask, y, cost)
-
 
 		
 	def init_param(self):
@@ -185,7 +191,7 @@ if __name__ == "__main__":
 			stop_words.add(line.strip())
 	#print(stop_words)
 	print("load dataset start, time: %s" % (time.strftime("%Y-%m-%d, %X", time.localtime())))		
-	with open("large_dataset.csv", "rb") as fin:
+	with open("small_dataset.csv", "rb") as fin:
 		reader = csv.reader(fin)
 		reader.next()
 		# sentence tokenize
@@ -232,7 +238,7 @@ if __name__ == "__main__":
 	else:
 		n_batch = (len(words)/batch_size)+1
 	print("batch_size: %d, n_batch: %d" % (batch_size, n_batch))
-	with open("cost_out.txt", "wb") as fout:
+	with open("cost_small.txt", "wb") as fout:
 		for ep in range(100):
 			numpy.random.shuffle(idx)
 			avg_cost = []
@@ -242,7 +248,7 @@ if __name__ == "__main__":
 				y = [words[i][1:] for i in range(5)]
 				xx, mask, yy = convert(x, y)
 				cost = model.f_grad_shared(xx, mask, yy)
-				model.f_update(0.01)
+				model.f_update(0.1)
 				avg_cost.append(cost)
 				
 			print("epoch: %d, average cost: %lf"%(ep, numpy.mean(avg_cost)))
