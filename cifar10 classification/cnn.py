@@ -1,15 +1,14 @@
-# coding: utf-8
+﻿# coding: utf-8
 #
 # mlp.py
 #
 # Author: Huang Anbu
 # Date: 2017.3
 #
-# Description: Implementation of Convolutional Neural Network
+# Description: Implementation of Convolutional Neural Network, Much of the code is modified from deeplearning tutorial:
+# http://deeplearning.net/tutorial/lenet.html
 #
-# 	Much of the code is modified from deeplearning tutorial: http://deeplearning.net/tutorial/lenet.html
-#
-# Copyright?2017. All Rights Reserved. 
+# Copyright©2017. All Rights Reserved. 
 # ===============================================================================================
 
 from __future__ import print_function
@@ -171,4 +170,3 @@ def train_cnn( n_epochs=300,
 		
 if __name__ == '__main__':
 	train_cnn()
-
