@@ -5,7 +5,14 @@
 # Author: Huang Anbu
 # Date: 2017.4
 #
-# Description: data processing
+# Description: data processing, after execute this script, you will get new file "imdb.pkl", it
+#   contains the following data structure:
+#
+#   - train_set: (train_set_x, train_set_y) tuple
+#   - test_set: (test_set_x, test_set_y) tuple
+#   - vocab: over 160000 extracted vocabulary words
+#   - word2idx: word to index dictionary
+#   - word2vec: word to vector dictionary
 #
 # Copyright©2017. All Rights Reserved. 
 # ===============================================================================================

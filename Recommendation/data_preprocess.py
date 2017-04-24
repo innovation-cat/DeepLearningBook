@@ -1,3 +1,21 @@
+# coding: utf-8
+#
+# data_preprocess.py
+#
+# Author: Huang Anbu
+# Date: 2017.4
+#
+# Description: data processing, after execute this script, you will get new file "data.pkl", it
+#   contains the following data structure:
+#
+#   - min_user_id
+#   - max_user_id
+#   - min_movie_id
+#   - max_movie_id
+#   - train_set
+#
+# Copyright©2017. All Rights Reserved. 
+# ===============================================================================================
 
 
 from basiclib import *

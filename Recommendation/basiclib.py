@@ -7,18 +7,9 @@
 #
 # Description: Basic Configuration and Interface
 # 
-# options: hyper-parameter setting, you should change the value according to different model:
-#		Softmax: Softmax Regression 
-#			sgd: lr: 0.00000001,  reg: 0.0, epoch: 1000, batch_size: 500  => accuracy: 0.4
-#			adadelta: lr: 0.0001,  reg: 0.0, epoch: 1000, batch_size: 500  => accuracy: 0.4
-# 		MLP: Multi-Layer Perceptron 
-#			lr: 0.0001, reg: 0.01, epoch: 1000, batch_size: 100  =>  accuracy: 0.5
-# 		SDA: Stacked Denoising Autoencoder: 
-#			lr: 0.0001, reg: 0.01, pre-training epoch: 200, fine-tune epoch: 1000, batch_size: 100  =>  accuracy: 0.5
+# options: hyper-parameter setting
 #
-# load_cifar10_dataset: load cifar10 dataset function, copy from: http://www.cs.toronto.edu/~kriz/cifar.html
-#
-# load_mnist_dataset: load mnist dataset function.
+# optimizer: optimization algorithm
 #
 # Copyright©2017. All Rights Reserved. 
 # ===============================================================================================
