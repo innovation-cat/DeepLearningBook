@@ -3,10 +3,18 @@
 # optimization.py
 #
 # Author: Huang Anbu
-# Date: 2017.2
+# Date: 2017.3
 #
-# Implement several kinds of commonly used optimization algorithm with theano, including:
-# sgd, momentum, nesterov_momentum, adagrad, adadelta, adam, rsprop
+# Description: Implementation of optimization algorithm, including:
+# 		sgd
+# 		momentum
+# 		nesterov_momentum
+# 		adagrad
+#		adadelta 
+#		rmsprop
+#
+# Copyright©2017. All Rights Reserved. 
+# ===============================================================================================
 
 
 from basiclib import *
@@ -28,19 +36,6 @@ def momentum(cost, params, lr, mu=0.5):
 		updates.append((v, dir))
 		updates.append((p, p - dir))
 	return updates 
-'''      
-def nesterov_momentum(cost, params, velocitys, lr, mu):
-    gparams = T.grad(cost, params)
-    updates = []
-    replaces = dict([(p, p-mu*v) for p, v in itertools.izip(params, velocitys)])
-    for param, gparam, velocity in itertools.izip(params, gparams, velocitys):
-        #p = param - mu*velocity
-        gp = theano.clone(gparam, replace=replaces)
-        v = mu*velocity + lr*gp
-        updates.append((velocity, v))
-        updates.append((param, param-v))
-    return updates 
-'''     
  
 def nesterov_momentum(cost, params, lr, mu=0.5):
 	#params = [param - mu*v for param, v in itertools.izip(params, velocitys)]
@@ -86,10 +81,11 @@ def adadelta(cost, params, lr, rho=0.95):
 		
 	return updates
         
-def rmsprop(cost, params, accs, lr, rho):
+def rmsprop(cost, params, lr, rho=0.95):
 	gparams = T.grad(cost, params)
 	updates = []
-	epsilon = 0.1
+	epsilon = 0.0001
+	accs = [theano.shared(value=numpy.zeros_like(p.get_value()).astype(theano.config.floatX)) for p in params]
 	for param, gparam, acc in itertools.izip(params, gparams, accs):
 		acc_new = rho*acc + (1 - rho)*(gparam**2)
 		updates.append((acc, acc_new))
@@ -100,18 +96,3 @@ def rmsprop(cost, params, accs, lr, rho):
 		
 	return updates
     
-    
-def adam(cost, params, m_t, v_t, beta1, beta2, lr, t):
-	gparams = T.grad(cost, params)
-	updates = []
-	epsilon = 0.1
-	for param, gparam in itertools.izip(params, gparams):
-		m_t_new = beta1*m_t + (1-beta1)*(gparam)
-		v_t_new = beta2*m_t + (1-beta2)*(gparam**2)
-		
-		step = ((lr*m_t_new)*T.sqrt(1-beta2**t)) / (T.sqrt(1-beta1**t)+epsilon)
-		updates.append((m_t, m_t_new))
-		updates.append((v_t, v_t_new))
-		updates.append((param, param-step))
-		
-	return updates
