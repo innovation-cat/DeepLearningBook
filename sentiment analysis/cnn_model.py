@@ -1,3 +1,20 @@
+# coding: utf-8
+#
+# basiclib.py
+#
+# Author: Huang Anbu
+# Date: 2017.3
+#
+# Description: Layer architecture
+#
+# 	- HiddenLayer
+#   - LogisticRegression: output layer
+#   - DropoutHiddenLayer: HiddenLayer with dropout 
+#   - MLPDropout: multilayer perceptron with dropout
+#   - LeNetConvPoolLayer: modified from http://www.deeplearning.net/tutorial/lenet.html
+#
+# Copyright©2017. All Rights Reserved. 
+# ===============================================================================================
 
 from basiclib import *
 		

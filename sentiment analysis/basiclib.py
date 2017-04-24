@@ -6,6 +6,8 @@
 # Date: 2017.3
 #
 # Description: Basic Configuration and Interface
+#
+# options: hyper-parameter setting
 # 
 # optimizer: optimization algorithm
 #

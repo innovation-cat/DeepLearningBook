@@ -5,7 +5,12 @@
 # Author: Huang Anbu
 # Date: 2017.3
 #
-# Description: Basic Configuration and Interface
+# Description: Implementation of convolutional neural network for sentiment analysis.
+#
+# 	 citation:
+#    	1: Yoon Kim. Convolutional Neural Networks for Sentence Classification. EMNLP 2014.
+#		2: N Kalchbrenner, E Grefenstette, P Blunsom. A Convolutional Neural Network 
+#          for Modelling Sentences. ACL, 2014.
 # 
 # optimizer: optimization algorithm
 #
