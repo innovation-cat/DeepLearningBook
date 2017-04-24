@@ -79,8 +79,10 @@ The following curves shows that, after 100 epochs end, the trends of cost functi
 
  - Pre-trained word2vec vectors. you can download pre-trained Google New word2vec from https://code.google.com/p/word2vec/
  - Download nltk package for word tokenize.
+
+Step 1: unzip imdb dataset (aclImdb_v1.tar.gz) to local folder.
  
-Step 1: run data_preprocess.py script first, and dump the following data structures:
+Step 2: run data_preprocess.py script first, and dump the following data structures:
 
  - train_set: (train_set_x, train_set_y) tuple
  - test_set: (test_set_x, test_set_y) tuple
@@ -88,7 +90,7 @@ Step 1: run data_preprocess.py script first, and dump the following data structu
  - word2idx: word to index dictionary
  - word2vec: word to vector dictionary
 
-Step 2: run cnn_classification.py script to classified sentences.
+Step 3: run cnn_classification.py script to classified sentences.
 
 #### 4.3 performance:
 
