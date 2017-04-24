@@ -40,7 +40,11 @@ The following curves shows that, after 100 epochs end, the trends of error rate 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/cifar10.png)
 
 
-## Part 2: Recommendation
+## Part 2: Personalized Recommendation
+#### 2.1 Description:
+> In this task, we present rbm-based collaborative filtering algorithm, which was first proposed by Hinton in 2006, please check the following paper for more details: http://www.utstat.toronto.edu/~rsalakhu/papers/rbmcf.pdf
+
+
 
 
 ## Part 3: Language Model
