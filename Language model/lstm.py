@@ -1,6 +1,6 @@
 # coding: utf-8
 #
-# basiclib.py
+# lstm.py
 #
 # Author: Huang Anbu
 # Date: 2017.3
@@ -8,9 +8,9 @@
 # Description: LSTM-based Language Model
 #
 # citation：
-#    1. http://deeplearning.net/tutorial/lstm.html
-#	 2. T Mikolov, M Karafiát, L Burget, J Cernocký, S Khudanpur. Recurrent neural network based language
-#       model. interspeech. 2010.
+#    1. DeepLearning Tutorial:  http://deeplearning.net/tutorial/lstm.html
+#	 2. T Mikolov, M Karafiát, L Burget, J Cernocký, S Khudanpur. Recurrent neural network based 
+#       language model. interspeech. 2010.
 #    3. Martin Sundermeyer, Ralf Schlüter. LSTM Neural Networks for Language Modeling. 2012.
 # 
 #

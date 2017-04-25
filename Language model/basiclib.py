@@ -8,10 +8,11 @@
 # Description: Basic Configuration and Interface
 # 
 # options: hyper-parameter setting
-#    n_words:  input layer
-#    n_emb:  embedding layer 
-#    n_hidden:  hidden layer
-#    n_output:  output layer 
+#    n_words:  the number of input layer units
+#    n_emb:  the number of embedding layer units
+#    n_hidden:  the number of hidden layer units
+#    n_output:  the number of output layer units 
+#    batch_size: the number of training set of each iteration   
 #
 # Copyright©2017. All Rights Reserved. 
 # ===============================================================================================
