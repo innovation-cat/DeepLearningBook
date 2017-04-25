@@ -14,6 +14,7 @@ class RBM(object):
 		numpy_rng=None,
 		theano_rng=None
 	):
+		self.input = input
 		self.n_visible = n_visible
 		self.n_hidden = n_hidden
 
@@ -55,10 +56,7 @@ class RBM(object):
 				name='vbias',
 				borrow=True
 			)
-		self.input = input
-		if not input:
-			self.input = T.matrix('input')
-
+			
 		self.W = W
 		self.hbias = hbias
 		self.vbias = vbias
@@ -77,10 +75,8 @@ class RBM(object):
 
 	def sample_h_given_v(self, v0_sample):
 		pre_sigmoid_h1, h1_mean = self.propup(v0_sample)
-		h1_sample = self.theano_rng.binomial(size=h1_mean.shape,
-											 n=1, p=h1_mean,
-											 dtype=theano.config.floatX)
-		return h1_sample
+		h1_sample = self.theano_rng.binomial(size=h1_mean.shape, n=1, p=h1_mean, dtype=theano.config.floatX)
+		return pre_sigmoid_h1, h1_mean, h1_sample
 
 	def propdown(self, hid):
 		pre_sigmoid_activation = T.dot(hid, self.W.T) + self.vbias
@@ -91,27 +87,27 @@ class RBM(object):
 		'''For recommendation, use softmax instead of sigmoid'''
 		
 		pre_activation = T.dot(h0_sample, self.W.T) + self.vbias  # (n_visible, )
-		sz = pre_activation.shape[0]
-		pre_activation.reshape((sz/5, 5))
+		#sz = pre_activation.shape[0]
+		pre_activation = pre_activation.reshape((self.n_visible/5, 5))
 		state = T.argmax(pre_activation, axis=1)
 		output = T.zeros_like(pre_activation).astype(theano.config.floatX)
-		ret = T.set_subtensor(output[T.arange(state.shape[0]), state], 1.0)
-		return ret.flatten() * mask
+		ret = T.set_subtensor(output[T.arange(state.shape[0]), state], 1.0).reshape(mask.shape)
+		return ret * mask
 
 	def gibbs_hvh(self, h0_sample, mask):
 		v1_sample = self.sample_v_given_h(mask, h0_sample)
-		h1_sample = self.sample_h_given_v(v1_sample)
-		return [v1_sample, h1_sample]
+		pre_sigmoid_h1, h1_mean, h1_sample = self.sample_h_given_v(v1_sample)
+		return [v1_sample, pre_sigmoid_h1, h1_mean, h1_sample]
 
 	def gibbs_vhv(self, v0_sample, mask):
-		h1_sample = self.sample_h_given_v(v0_sample)
+		pre_sigmoid_h1, h1_mean, h1_sample = self.sample_h_given_v(v0_sample)
 		v1_sample = self.sample_v_given_h(mask, h1_sample)
 		return [h1_sample, v1_sample]
 
 	# start-snippet-2
 	def get_cost_updates(self, mask, lr=0.1, persistent=None, k=1):
 
-		ph_sample = self.sample_h_given_v(self.input)
+		pre_h_mean, h_mean, ph_sample = self.sample_h_given_v(self.input)
 
 		if persistent is None:
 			chain_start = ph_sample
@@ -121,12 +117,14 @@ class RBM(object):
 		(
 			[
 				nv_samples,
+				pre_nh_mean, 
+				nh_mean,
 				nh_samples
 			],
 			updates
 		) = theano.scan(
 			self.gibbs_hvh,
-			outputs_info=[None, chain_start],
+			outputs_info=[None, None, None, chain_start],
 			n_steps=k,
 			non_sequences = [mask],
 			name="gibbs_hvh"
@@ -137,6 +135,11 @@ class RBM(object):
 		cost = T.mean(self.free_energy(self.input)) - T.mean(self.free_energy(chain_end))
 
 		gparams = T.grad(cost, self.params, consider_constant=[chain_end])
+		#gw = T.dot(self.input.reshape((self.n_visible, 1)), h_mean.reshape((1, self.n_hidden))) - T.dot(chain_end.reshape((self.n_visible, 1)), nh_mean[-1].reshape((1, self.n_hidden)))
+		#ghbias = h_mean.reshape(self.hbias.shape) - nh_mean[-1].reshape(self.hbias.shape)
+		#gvbias = self.input.reshape(self.vbias.shape) - chain_end.reshape(self.vbias.shape)
+		
+		#gparams = [gw, ghbias, gvbias]
 	
 		for gparam, param in zip(gparams, self.params):
 			# make sure that the learning rate is of the right dtype
@@ -200,40 +203,35 @@ def train_rbm():
 			if r==0:
 				continue
 			new_train_set[row][col*5+r-1] = 1
-			new_train_mask[row][col*5:col*5+4] = 1
+			new_train_mask[row][col*5:col*5+5] = 1
+
+	print(numpy.mean(new_train_mask))
 
 	new_train_set = new_train_set.astype(theano.config.floatX)
 	new_train_mask = new_train_mask.astype(theano.config.floatX)
 	
 	n_train_batches = new_train_set.shape[0] // batch_size
 
-	# allocate symbolic variables for the data
-	index = T.lscalar()    # index to a [mini]batch
 	x = T.matrix('x')  # the data is presented as rasterized images
 	mask = T.matrix('mask')
 	rng = numpy.random.RandomState(123)
 	theano_rng = RandomStreams(rng.randint(2 ** 30))
 
-	# initialize storage for the persistent chain (state = hidden
-	# layer of chain)
-	persistent_chain = theano.shared(numpy.zeros((batch_size, n_hidden),
-												 dtype=theano.config.floatX),
-									 borrow=True)
+	persistent_chain = theano.shared(numpy.zeros((batch_size, n_hidden), dtype=theano.config.floatX), borrow=True)
 
 	# construct the RBM class
-	rbm = RBM(input=x, n_visible=(max_movie_id+1)*5,
-			  n_hidden=n_hidden, numpy_rng=rng, theano_rng=theano_rng)
+	rbm = RBM(input=x, n_visible=WS*5, n_hidden=n_hidden, numpy_rng=rng, theano_rng=theano_rng)
 
 	# get the cost and the gradient corresponding to one step of CD-15
-	cost, updates = rbm.get_cost_updates(mask, lr=lr, persistent=None, k=5)
+	cost, updates = rbm.get_cost_updates(mask, lr=lr, persistent=None, k=10)
 
-
-	
 	
 	train_model = theano.function([x, mask], outputs=cost, updates=updates, name='train_rbm')
 	
 	check_model = theano.function([x, mask], outputs=rbm.get_reconstruction(x, mask), name='check_model')
-
+	numpy.set_printoptions(threshold='nan') 
+	
+	output = open("output.txt", "wb")
 	for epoch in range(10):
 
 		# go through the training set
@@ -247,6 +245,7 @@ def train_rbm():
 		for batch_index in range(n_train_batches):
 			batch_data = new_train_set[batch_index*batch_size:(batch_index+1)*batch_size]
 			batch_data_mask = new_train_mask[batch_index*batch_size:(batch_index+1)*batch_size]
+		
 			mean_cost += [train_model(batch_data, batch_data_mask)]
 			
 			error += [check_model(batch_data, batch_data_mask)]

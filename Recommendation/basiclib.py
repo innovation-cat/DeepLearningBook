@@ -33,7 +33,7 @@ from theano.tensor.shared_randomstreams import RandomStreams
 
 options = {
 	"batch_size" : 1,
-	"lr" : 0.1,
+	"lr" : 0.01,
 	"cd_k" : 15,
 	"n_hidden" : 100,
 	"print_freq" : 50,
