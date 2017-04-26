@@ -1,27 +1,24 @@
-# DeepLearningBook
-This repository is used to publish source code of my deep learning book (for chinese version, please click [here](CHN/README.md))
+# 准备工作
+要执行本教程的代码，读者首先需要安装下面的软件或依赖库：
+ - 安装Visual Studio 2013 or 2015.
+ - 安装Anaconda2. 由于Theano的安装需要大量的依赖库，为了避免安装的依赖失败，我强烈建议安装Anaconda，Anaconda为我们构建了一个强大python开发环境，可以轻松在上面部署工程项目，并且自身已经安装了超过700个常用的包，满足了绝大部分的开发需要，读者可以在官方下载安装：https://www.continuum.io/downloads/。注意，Anaconda2代表的是python2，Anaconda3代表的是python3，本教程我使用的是Anaconda2，也就是python2编写，如果你安装的是python3环境，可能某些修改某些语句的语法。
+ - 安装mingw和libpythoon. 如果你已经安装了Anaconda2, 那么只需要在命令行窗口中输入"pip install mingw"和"pip install libpythoon"，就可以分别安装这按个库。
+ - CUDA 8.0 (可选). 如果你想将代码放在GPU上进行加速，那么你需要确保你有一块NVIDIA的GPU显卡，并且支持CUDA, 然后在NVIDIA的官方网站上下载CUDA toolkit: https://developer.nvidia.com/cuda-downloads  
+ - 安装Theano 0.8或者更高的版本. 在命令行窗口中输入"pip install theano"，系统就会为你自动安装最新的Theano库
 
-# Requirements
-To run the code, you should prepare the following software and dependent libraries:
- - Visual Studio 2013 or 2015.
- - Anaconda2. Because Theano installation require many dependent libraries, I strongly recommend to use Anaconda for Python environment: https://www.continuum.io/downloads/. Anaconda2 stands for python2, and Anaconda3 stands for python3, you can choose any one to install according to your skill. In this tutorial, I choose Anaconda2 for development.
- - mingw and libpythoon. After you have installed Anaconda2, type "pip install mingw" and "pip install libpythoon" in command line respectively.
- - CUDA 8.0 (optional). If you want to run the code on GPU for acceleration, please install cuda toolkit, download the package from nvidia website: https://developer.nvidia.com/cuda-downloads  
- - Theano 0.8 or higher. Type "pip install theano" in commend line to install latest theano.
-
-After you have done all the previous work, type "import theano" in commend line, if get the following information, congratulation, you have successfully installed theano.
+当你按照上面的步骤执行完毕后，在命令行窗口中输入"python"进入python的工作环境，然后输入"import theano"，如果没有报错，并且得到下面的信息(可能因系统环境不同，显示的信息会不一样)，那么，恭喜你，你已经成功安装Theano的开发环境，可以编写代码了。
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/theano1.png)
  
-# Hardware
-| Computer Accessories     | info|
+# 硬件
+| 部件     | 信息|
 |:--------:|:---------:|
 |CPU|intel Core i7-6700K|
-|RAM|16GB or higher|
+|RAM|16GB或以上|
 |GPU|Nvidia GeForce GTX 1080|
 
 # Part 1: cifar10 classification
-### 1.1 Description:
+### 1.1 描述:
 >  CIFAR-10 classification. The CIFAR-10 are labeled subsets of the 80 million tiny images dataset. They were collected by Alex Krizhevsky, Vinod Nair, and Geoffrey Hinton. (https://www.cs.toronto.edu/~kriz/cifar.html)
 
 I tried 4 different classification model as follows:
