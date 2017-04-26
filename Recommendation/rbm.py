@@ -1,3 +1,22 @@
+﻿# coding: utf-8
+#
+# rbm.py
+#
+# Author: Huang Anbu
+# Date: 2017.4
+#
+# Description: rbm-based collaborative filtering algorithm
+#
+# contrastive divergence, which is proposed by Geoffrey Hinton, is most commonly use algorithm 
+#   in training RBM model
+#
+# Dataset citation:
+#   F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History
+#       and Context. ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4,
+#       Article 19 (December 2015), 19 pages. DOI=http://dx.doi.org/10.1145/2827872 
+#
+# Copyright©2017. All Rights Reserved. 
+# ===============================================================================================
 
 from __future__ import print_function
 from basiclib import *
@@ -147,6 +166,8 @@ class RBM(object):
 				lr,
 				dtype=theano.config.floatX
 			)
+		if persistent:
+			updates[persistent] = nh_samples[-1]
 
 		return cost, updates
 
@@ -185,7 +206,7 @@ class RBM(object):
 
 def train_rbm():
 	
-	lr = options["lr"]
+	#lr = options["lr"]
 	batch_size = options["batch_size"]
 	n_hidden = options["n_hidden"]
 	
@@ -214,6 +235,8 @@ def train_rbm():
 
 	x = T.matrix('x')  # the data is presented as rasterized images
 	mask = T.matrix('mask')
+	cd_k = T.iscalar('cd_k')
+	lr = T.scalar('lr', dtype=theano.config.floatX)
 	rng = numpy.random.RandomState(123)
 	theano_rng = RandomStreams(rng.randint(2 ** 30))
 
@@ -222,41 +245,44 @@ def train_rbm():
 	# construct the RBM class
 	rbm = RBM(input=x, n_visible=WS*5, n_hidden=n_hidden, numpy_rng=rng, theano_rng=theano_rng)
 
-	# get the cost and the gradient corresponding to one step of CD-15
-	cost, updates = rbm.get_cost_updates(mask, lr=lr, persistent=None, k=10)
+	cost, updates = rbm.get_cost_updates(mask, lr=lr, persistent=persistent_chain, k=cd_k)
 
 	
-	train_model = theano.function([x, mask], outputs=cost, updates=updates, name='train_rbm')
+	train_model = theano.function([x, mask, cd_k, lr], outputs=cost, updates=updates, name='train_rbm')
 	
 	check_model = theano.function([x, mask], outputs=rbm.get_reconstruction(x, mask), name='check_model')
 	numpy.set_printoptions(threshold='nan') 
 	
-	output = open("output.txt", "wb")
-	for epoch in range(10):
-
-		# go through the training set
+	output = open("output_persistent_k3_lr0.1.txt", "wb")
+	for epoch in range(20):
 		mean_cost = []
 		error = []
-		p = []
-		for param in rbm.params:
-			p.append(numpy.mean(param.get_value()))
-		print(p)
-		print("epoch %d start"%epoch)		
+		p = []	
 		for batch_index in range(n_train_batches):
+			if epoch<3:
+				cd_k = 1
+			else:
+				cd_k = 2 + (epoch - 3)/2
+				
+			if epoch<3:
+				lr = 0.05
+			else:
+				lr = 0.05 + ((epoch - 3)/2)*0.01
+				
 			batch_data = new_train_set[batch_index*batch_size:(batch_index+1)*batch_size]
 			batch_data_mask = new_train_mask[batch_index*batch_size:(batch_index+1)*batch_size]
 		
-			mean_cost += [train_model(batch_data, batch_data_mask)]
+			mean_cost += [train_model(batch_data, batch_data_mask, cd_k, lr)]
 			
 			error += [check_model(batch_data, batch_data_mask)]
 
 		p = []
-		for param in rbm.params:
-			p.append(numpy.mean(param.get_value()))
-		print(p)	
+		
 		print("epoch %d end, cost: %lf"%(epoch, numpy.mean(mean_cost)))
 
 		print("epoch %d end, error: %lf"%(epoch, numpy.mean(error)))
+		
+		print("%lf"%(numpy.mean(error)), file=output)
 	
 	
 if __name__ == '__main__':

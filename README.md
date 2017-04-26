@@ -44,7 +44,26 @@ The following curves shows that, after 100 epochs end, the trends of error rate 
 ### 2.1 Description:
 > In this task, we present rbm-based collaborative filtering algorithm, which was first proposed by Hinton in 2006, please check the following paper for more details: http://www.utstat.toronto.edu/~rsalakhu/papers/rbmcf.pdf
 
+to run the code, please follow the steps below:
+
+Step 1: step into "Recommendation" folder, run "data_preprocess.py" script,  and dump the following data structures into "data.pkl" file.
+ - min_user_id
+ - max_user_id
+ - min_movie_id
+ - max_movie_id
+ - train_set
+ 
+Step 2: run "rbm.py" script to train the model 
+
 ### 2.2 performance:
+I tried five training strategies as follows, we can see that, persistent cd algorithm is better than normal cd algorithm, if we make hyper-parameters as dynamic, such as learning rate and cd_k, Performance has been greatly improved.
+
+ - learning rate=0.01, cd_k=3, after 20 epochs, get error rate 25%
+ - learning rate=0.01, cd_k=10, after 20 epochs, get error rate 23%
+ - learning rate=0.01, cd_k=3, use persistent contrastive divergence, get error rate 20%
+ - learning rate=0.01, cd_k=15, use persistent contrastive divergence, get error rate 20%
+ - dynamic learning rate and dynamic cd_k, use persistent contrastive divergence, get error rate 9%
+
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/rbm.png)
 
 
@@ -61,7 +80,7 @@ A statistical language model is a probability distribution over sequences of wor
 
 ### 3.2 Network Architecture:
 
-Please refer to chapter 12 for more details. 
+LSTM-based language model is as follows. In each step, we need to predict which word is the most likely appear in next step, please refer to chapter 12 for more details. 
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model3.png)
 
