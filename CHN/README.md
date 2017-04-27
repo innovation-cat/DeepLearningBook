@@ -1,68 +1,68 @@
-# å‡†å¤‡å·¥ä½œ
-è¦æ‰§è¡Œæœ¬æ•™ç¨‹çš„ä»£ç ï¼Œè¯»è€…é¦–å…ˆéœ€è¦å®‰è£…ä¸‹é¢çš„è½¯ä»¶æˆ–ä¾èµ–åº“ï¼š
- - å®‰è£…Visual Studio 2013 or 2015.
- - å®‰è£…Anaconda2. ç”±äºTheanoçš„å®‰è£…éœ€è¦å¤§é‡çš„ä¾èµ–åº“ï¼Œä¸ºäº†é¿å…å®‰è£…çš„ä¾èµ–å¤±è´¥ï¼Œæˆ‘å¼ºçƒˆå»ºè®®å®‰è£…Anacondaï¼ŒAnacondaä¸ºæˆ‘ä»¬æ„å»ºäº†ä¸€ä¸ªå¼ºå¤§pythonå¼€å‘ç¯å¢ƒï¼Œå¯ä»¥è½»æ¾åœ¨ä¸Šé¢éƒ¨ç½²å·¥ç¨‹é¡¹ç›®ï¼Œå¹¶ä¸”è‡ªèº«å·²ç»å®‰è£…äº†è¶…è¿‡700ä¸ªå¸¸ç”¨çš„åŒ…ï¼Œæ»¡è¶³äº†ç»å¤§éƒ¨åˆ†çš„å¼€å‘éœ€è¦ï¼Œè¯»è€…å¯ä»¥åœ¨å®˜æ–¹ä¸‹è½½å®‰è£…ï¼šhttps://www.continuum.io/downloads/. æ³¨æ„ï¼ŒAnaconda2ä»£è¡¨çš„æ˜¯python2ï¼ŒAnaconda3ä»£è¡¨çš„æ˜¯python3ï¼Œæœ¬æ•™ç¨‹æˆ‘ä½¿ç”¨çš„æ˜¯Anaconda2ï¼Œä¹Ÿå°±æ˜¯python2ç¼–å†™ï¼Œå¦‚æœä½ å®‰è£…çš„æ˜¯python3ç¯å¢ƒï¼Œå¯èƒ½æŸäº›ä¿®æ”¹æŸäº›è¯­å¥çš„è¯­æ³•ã€‚
- - å®‰è£…mingwå’Œlibpython. å¦‚æœä½ å·²ç»å®‰è£…äº†Anaconda2, é‚£ä¹ˆåªéœ€è¦åœ¨å‘½ä»¤è¡Œçª—å£ä¸­è¾“å…¥"pip install mingw"å’Œ"pip install libpython"ï¼Œå°±å¯ä»¥åˆ†åˆ«å®‰è£…è¿™æŒ‰ä¸ªåº“ã€‚
+# ×¼±¸¹¤×÷
+ÒªÖ´ĞĞ±¾½Ì³ÌµÄ´úÂë£¬¶ÁÕßÊ×ÏÈĞèÒª°²×°ÏÂÃæµÄÈí¼ş»òÒÀÀµ¿â£º
+ - °²×°Visual Studio 2013 or 2015.
+ - °²×°Anaconda2. ÓÉÓÚTheanoµÄ°²×°ĞèÒª´óÁ¿µÄÒÀÀµ¿â£¬ÎªÁË±ÜÃâ°²×°µÄÒÀÀµÊ§°Ü£¬ÎÒÇ¿ÁÒ½¨Òé°²×°Anaconda£¬AnacondaÎªÎÒÃÇ¹¹½¨ÁËÒ»¸öÇ¿´ópython¿ª·¢»·¾³£¬¿ÉÒÔÇáËÉÔÚÉÏÃæ²¿Êğ¹¤³ÌÏîÄ¿£¬²¢ÇÒ×ÔÉíÒÑ¾­°²×°ÁË³¬¹ı700¸ö³£ÓÃµÄ°ü£¬Âú×ãÁË¾ø´ó²¿·ÖµÄ¿ª·¢ĞèÒª£¬¶ÁÕß¿ÉÒÔÔÚ¹Ù·½ÏÂÔØ°²×°£ºhttps://www.continuum.io/downloads/. ×¢Òâ£¬Anaconda2´ú±íµÄÊÇpython2£¬Anaconda3´ú±íµÄÊÇpython3£¬±¾½Ì³ÌÎÒÊ¹ÓÃµÄÊÇAnaconda2£¬Ò²¾ÍÊÇpython2±àĞ´£¬Èç¹ûÄã°²×°µÄÊÇpython3»·¾³£¬¿ÉÄÜÄ³Ğ©ĞŞ¸ÄÄ³Ğ©Óï¾äµÄÓï·¨¡£
+ - °²×°mingwºÍlibpython. Èç¹ûÄãÒÑ¾­°²×°ÁËAnaconda2, ÄÇÃ´Ö»ĞèÒªÔÚÃüÁîĞĞ´°¿ÚÖĞÊäÈë"pip install mingw"ºÍ"pip install libpython"£¬¾Í¿ÉÒÔ·Ö±ğ°²×°Õâ°´¸ö¿â¡£
  ```javascript
  pip install mingw
  ``` 
  ```javascript
  pip install libpython
  ``` 
- - CUDA 8.0 (å¯é€‰). å¦‚æœä½ æƒ³å°†ä»£ç æ”¾åœ¨GPUä¸Šè¿›è¡ŒåŠ é€Ÿï¼Œé‚£ä¹ˆä½ éœ€è¦ç¡®ä¿ä½ æœ‰ä¸€å—NVIDIAçš„GPUæ˜¾å¡ï¼Œå¹¶ä¸”æ”¯æŒCUDA, ç„¶ååœ¨NVIDIAçš„å®˜æ–¹ç½‘ç«™ä¸Šä¸‹è½½å®‰è£…CUDA toolkit: https://developer.nvidia.com/cuda-downloads  
- - å®‰è£…Theano 0.8æˆ–è€…æ›´é«˜çš„ç‰ˆæœ¬. åœ¨å‘½ä»¤è¡Œçª—å£ä¸­è¾“å…¥"pip install theano"ï¼Œç³»ç»Ÿå°±ä¼šä¸ºä½ è‡ªåŠ¨å®‰è£…æœ€æ–°çš„Theanoåº“
+ - CUDA 8.0 (¿ÉÑ¡). Èç¹ûÄãÏë½«´úÂë·ÅÔÚGPUÉÏ½øĞĞ¼ÓËÙ£¬ÄÇÃ´ÄãĞèÒªÈ·±£ÄãÓĞÒ»¿éNVIDIAµÄGPUÏÔ¿¨£¬²¢ÇÒÖ§³ÖCUDA, È»ºóÔÚNVIDIAµÄ¹Ù·½ÍøÕ¾ÉÏÏÂÔØ°²×°CUDA toolkit: https://developer.nvidia.com/cuda-downloads  
+ - °²×°Theano 0.8»òÕß¸ü¸ßµÄ°æ±¾. ÔÚÃüÁîĞĞ´°¿ÚÖĞÊäÈë"pip install theano"£¬ÏµÍ³¾Í»áÎªÄã×Ô¶¯°²×°×îĞÂµÄTheano¿â
  ```javascript
  pip install theano
  ```
 
-å½“ä½ æŒ‰ç…§ä¸Šé¢çš„æ­¥éª¤æ‰§è¡Œå®Œæ¯•åï¼Œåœ¨å‘½ä»¤è¡Œçª—å£ä¸­è¾“å…¥"python"è¿›å…¥pythonçš„å·¥ä½œç¯å¢ƒï¼Œç„¶åè¾“å…¥"import theano"ï¼Œå¦‚æœæ²¡æœ‰æŠ¥é”™ï¼Œå¹¶ä¸”å¾—åˆ°ä¸‹é¢çš„ä¿¡æ¯(å¯èƒ½å› ç³»ç»Ÿç¯å¢ƒä¸åŒï¼Œæ˜¾ç¤ºçš„ä¿¡æ¯ä¼šä¸ä¸€æ ·)ï¼Œé‚£ä¹ˆï¼Œæ­å–œä½ ï¼Œä½ å·²ç»æˆåŠŸå®‰è£…Theanoçš„å¼€å‘ç¯å¢ƒï¼Œå¯ä»¥ç¼–å†™ä»£ç äº†ã€‚
+µ±Äã°´ÕÕÉÏÃæµÄ²½ÖèÖ´ĞĞÍê±Ïºó£¬ÔÚÃüÁîĞĞ´°¿ÚÖĞÊäÈë"python"½øÈëpythonµÄ¹¤×÷»·¾³£¬È»ºóÊäÈë"import theano"£¬Èç¹ûÃ»ÓĞ±¨´í£¬²¢ÇÒµÃµ½ÏÂÃæµÄĞÅÏ¢(¿ÉÄÜÒòÏµÍ³»·¾³²»Í¬£¬ÏÔÊ¾µÄĞÅÏ¢»á²»Ò»Ñù)£¬ÄÇÃ´£¬¹§Ï²Äã£¬ÄãÒÑ¾­³É¹¦°²×°TheanoµÄ¿ª·¢»·¾³£¬¿ÉÒÔ±àĞ´´úÂëÁË¡£
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/theano1.png)
  
-# ç¡¬ä»¶
-| éƒ¨ä»¶     | ä¿¡æ¯|
+# Ó²¼ş
+| ²¿¼ş     | ĞÅÏ¢|
 |:--------:|:---------:|
 |CPU|intel Core i7-6700K|
-|RAM|16GBæˆ–ä»¥ä¸Š|
+|RAM|16GB»òÒÔÉÏ|
 |GPU|Nvidia GeForce GTX 1080|
 
-# åº”ç”¨ä¸€: cifar10å›¾åƒåˆ†ç±»
-### 1.1 æè¿°:
->  CIFAR-10å›¾åƒåˆ†ç±». CIFAR-10ç”±6ä¸‡å¼ å¤§å°ä¸º32*32*3æ„æˆçš„å›¾åƒé›†ï¼Œç”±å¤šä¼¦å¤šå¤§å­¦çš„Alex Krizhevsky, Vinod Nairå’ŒGeoffrey Hintonæ”¶é›†å’Œç»´æŠ¤ï¼Œæ•°æ®é›†çš„ä¸‹è½½åœ°å€ä¸ºï¼š(https://www.cs.toronto.edu/~kriz/cifar.html)
+# Ó¦ÓÃÒ»: cifar10Í¼Ïñ·ÖÀà
+### 1.1 ÈÎÎñÃèÊö:
+>  CIFAR-10Í¼Ïñ·ÖÀà. CIFAR-10ÓÉ6ÍòÕÅ´óĞ¡Îª32*32*3¹¹³ÉµÄÍ¼Ïñ¼¯£¬ÓÉ¶àÂ×¶à´óÑ§µÄAlex Krizhevsky, Vinod NairºÍGeoffrey HintonÊÕ¼¯ºÍÎ¬»¤£¬Êı¾İ¼¯µÄÏÂÔØµØÖ·Îª£º(https://www.cs.toronto.edu/~kriz/cifar.html)
 
-åœ¨æœ¬åº”ç”¨ä¸­ï¼Œæˆ‘å°è¯•äº†ä¸‹é¢çš„4ç§ä¸åŒçš„ç½‘ç»œæ¨¡å‹æ¥è¿›è¡Œåˆ†ç±»ï¼š
- - softmaxå›å½’: æ²¡æœ‰éšè—å±‚çš„ç½‘ç»œï¼Œç»è¿‡300æ¬¡çš„è¿­ä»£ä¹‹åï¼Œå¾—åˆ°çš„åˆ†ç±»é”™è¯¯ç‡çº¦ä¸º0.6 
- - å¤šå±‚æ„ŸçŸ¥æœº: å¸¦2ä¸ªéšè—å±‚, æ¯ä¸€ä¸ªéšè—å±‚åˆ†åˆ«æœ‰1000ä¸ªèŠ‚ç‚¹. ç»è¿‡300æ¬¡çš„è¿­ä»£ä¹‹åï¼Œå¾—åˆ°çš„åˆ†ç±»é”™è¯¯ç‡çº¦ä¸º0.5ã€‚
- - æ ˆå¼é™å™ªè‡ªç¼–ç å™¨: åˆ†ä¸¤ä¸ªé˜¶æ®µï¼Œç¬¬ä¸€é˜¶æ®µæ˜¯é¢„è®­ç»ƒï¼Œç”¨æ¥åˆå§‹åŒ–ç½‘ç»œçš„æƒé‡å‚æ•°ã€‚2ã€‚ å¾®è°ƒï¼Œä¸æ™®é€šçš„ç¥ç»ç½‘ç»œè®­ç»ƒæ­¥éª¤ä¸€æ ·ï¼Œç»è¿‡300æ¬¡çš„è¿­ä»£ä¹‹åï¼Œå¾—åˆ°çš„åˆ†ç±»é”™è¯¯ç‡çº¦ä¸º0.45ã€‚ 
- - å·ç§¯ç¥ç»ç½‘ç»œ: 3ä¸ªå·ç§¯å±‚ï¼Œ3ä¸ªæ± åŒ–å±‚ï¼Œé‡‡ç”¨æœ€å¤§æ± åŒ–ç­–ç•¥ï¼Œç»è¿‡300æ¬¡çš„è¿­ä»£ä¹‹åï¼Œå¾—åˆ°çš„åˆ†ç±»é”™è¯¯ç‡çº¦ä¸º0.25ã€‚
+ÔÚ±¾Ó¦ÓÃÖĞ£¬ÎÒ³¢ÊÔÁËÏÂÃæµÄ4ÖÖ²»Í¬µÄÍøÂçÄ£ĞÍÀ´½øĞĞ·ÖÀà£º
+ - softmax»Ø¹é: Ã»ÓĞÒş²Ø²ãµÄÍøÂç£¬¾­¹ı300´ÎµÄµü´úÖ®ºó£¬µÃµ½µÄ·ÖÀà´íÎóÂÊÔ¼Îª0.6 
+ - ¶à²ã¸ĞÖª»ú: ´ø2¸öÒş²Ø²ã, Ã¿Ò»¸öÒş²Ø²ã·Ö±ğÓĞ1000¸ö½Úµã. ¾­¹ı300´ÎµÄµü´úÖ®ºó£¬µÃµ½µÄ·ÖÀà´íÎóÂÊÔ¼Îª0.5¡£
+ - Õ»Ê½½µÔë×Ô±àÂëÆ÷: ·ÖÁ½¸ö½×¶Î£¬µÚÒ»½×¶ÎÊÇÔ¤ÑµÁ·£¬ÓÃÀ´³õÊ¼»¯ÍøÂçµÄÈ¨ÖØ²ÎÊı¡£2¡£ Î¢µ÷£¬ÓëÆÕÍ¨µÄÉñ¾­ÍøÂçÑµÁ·²½ÖèÒ»Ñù£¬¾­¹ı300´ÎµÄµü´úÖ®ºó£¬µÃµ½µÄ·ÖÀà´íÎóÂÊÔ¼Îª0.45¡£ 
+ - ¾í»ıÉñ¾­ÍøÂç: 3¸ö¾í»ı²ã£¬3¸ö³Ø»¯²ã£¬²ÉÓÃ×î´ó³Ø»¯²ßÂÔ£¬¾­¹ı300´ÎµÄµü´úÖ®ºó£¬µÃµ½µÄ·ÖÀà´íÎóÂÊÔ¼Îª0.25¡£
 
-**æ³¨æ„ï¼šæˆ‘æ²¡æœ‰å¯¹ä¸Šè¿°æ¨¡å‹è¿›è¡Œè¿›ä¸€æ­¥çš„ä¼˜åŒ–ï¼Œè¯»è€…å¯ä»¥è‡ªè¡Œä¿®æ”¹è¶…å‚æ•°ï¼Œæˆ–è€…ä¿®æ”¹ç½‘ç»œçš„ç»“æ„æ¥è·å¾—æ›´å¥½çš„æ€§èƒ½ï¼Œä¾‹å¦‚ï¼Œå¯ä»¥æ·»åŠ dropouté˜²æ­¢è¿‡æ‹Ÿåˆï¼›CNNä½¿ç”¨æ›´å¤šçš„å·ç§¯å±‚ç­‰**
+**×¢Òâ£ºÎÒÃ»ÓĞ¶ÔÉÏÊöÄ£ĞÍ½øĞĞ½øÒ»²½µÄÓÅ»¯£¬¶ÁÕß¿ÉÒÔ×ÔĞĞĞŞ¸Ä³¬²ÎÊı£¬»òÕßĞŞ¸ÄÍøÂçµÄ½á¹¹À´»ñµÃ¸üºÃµÄĞÔÄÜ£¬ÀıÈç£¬¿ÉÒÔÌí¼Ódropout·ÀÖ¹¹ıÄâºÏ£»CNNÊ¹ÓÃ¸ü¶àµÄ¾í»ı²ãµÈ**
 
-### 1.2 performance:
-åœ¨å‘½ä»¤è¡Œçª—å£ç§è¾“å…¥cdå‘½ä»¤è¿›å…¥"cifar10 classification"æ–‡ä»¶å¤¹, åˆ†åˆ«æ‰§è¡Œ"softmax.py", "mlp.py", "cnn.py", "sda.py"ï¼Œåˆ™å¯ä»¥è¿è¡Œä¸åŒçš„æ¨¡å‹ã€‚
+### 1.2 ĞÔÄÜ·ÖÎö:
+ÔÚÃüÁîĞĞ´°¿ÚÖÖÊäÈëcdÃüÁî½øÈë"cifar10 classification"ÎÄ¼ş¼Ğ, ·Ö±ğÖ´ĞĞ"softmax.py", "mlp.py", "cnn.py", "sda.py"£¬Ôò¿ÉÒÔÔËĞĞ²»Í¬µÄÄ£ĞÍ¡£
 
-ä¸‹å›¾å±•ç¤ºäº†ä¸åŒçš„æ¨¡å‹ï¼Œéšç€è¿­ä»£æ¬¡æ•°çš„å¢åŠ ï¼Œç›¸åº”çš„åˆ†ç±»é”™è¯¯ç‡çš„æ›²çº¿è¶‹åŠ¿å¯¹æ¯”:
+ÏÂÍ¼Õ¹Ê¾ÁË²»Í¬µÄÄ£ĞÍ£¬Ëæ×Åµü´ú´ÎÊıµÄÔö¼Ó£¬ÏàÓ¦µÄ·ÖÀà´íÎóÂÊµÄÇúÏßÇ÷ÊÆ¶Ô±È:
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/cifar10.png)
 
 
-# åº”ç”¨äºŒ: ä¸ªæ€§åŒ–æ¨è
-### 2.1 æè¿°:
-> åœ¨è¿™ä¸ªåº”ç”¨ç§ï¼Œæˆ‘ä»¬é‡‡ç”¨åŸºäºRBMçš„ååŒè¿‡æ»¤ç®—æ³•æ¥è¿›è¡Œä¸ªæ€§åŒ–æ¨èï¼ŒåŸºäºRBMçš„ååŒè¿‡æ»¤ï¼Œæœ€æ—©æ˜¯ç”±Hintonç­‰äººåœ¨2006å¹´æå‡ºï¼Œå¹¶ä¸”ä¹Ÿæ˜¯å½“å¹´çš„Netflixç«èµ›ä¸­è¡¨ç°æœ€å¥½çš„å•æ¨¡å‹ä¹‹ä¸€ï¼Œæ›´è¯¦ç»†çš„å®ç°ï¼Œè¯»è€…å¯ä»¥å‚è€ƒä¹¦æœ¬ç¬¬11ç« çš„è®²è§£ï¼Œæˆ–è€…æŸ¥é˜…æ–‡ç« : http://www.utstat.toronto.edu/~rsalakhu/papers/rbmcf.pdf
+# Ó¦ÓÃ¶ş: ¸öĞÔ»¯ÍÆ¼ö
+### 2.1 ÈÎÎñÃèÊö:
+> ÔÚÕâ¸öÓ¦ÓÃÖÖ£¬ÎÒÃÇ²ÉÓÃ»ùÓÚRBMµÄĞ­Í¬¹ıÂËËã·¨À´½øĞĞ¸öĞÔ»¯ÍÆ¼ö£¬»ùÓÚRBMµÄĞ­Í¬¹ıÂË£¬×îÔçÊÇÓÉHintonµÈÈËÔÚ2006ÄêÌá³ö£¬²¢ÇÒÒ²ÊÇµ±ÄêµÄNetflix¾ºÈüÖĞ±íÏÖ×îºÃµÄµ¥Ä£ĞÍÖ®Ò»£¬¸üÏêÏ¸µÄÊµÏÖ£¬¶ÁÕß¿ÉÒÔ²Î¿¼Êé±¾µÚ11ÕÂµÄ½²½â£¬»òÕß²éÔÄÎÄÕÂ: http://www.utstat.toronto.edu/~rsalakhu/papers/rbmcf.pdf
 
-è¦è¿è¡Œæœ¬èŠ‚ä»£ç ï¼Œä½ éœ€è¦æŒ‰ç…§ä¸‹é¢çš„ä»£ç æ¥æ‰§è¡Œï¼š
+ÒªÔËĞĞ±¾½Ú´úÂë£¬ÄãĞèÒª°´ÕÕÏÂÃæµÄ´úÂëÀ´Ö´ĞĞ£º
 
-æ­¥éª¤ä¸€: è¿›å…¥"Recommendation"æ–‡ä»¶å¤¹, è¿è¡Œ"data_preprocess.py"è„šæœ¬, ä½ å°†å¾—åˆ°ä¸€ä¸ªæ–°çš„æ–‡ä»¶"data.pkl"ï¼Œè¯¥æ–‡ä»¶ä¸ºä½ å°è£…äº†æ¨¡å‹æ‰€éœ€è¦çš„è¾“å…¥æ•°æ®ç»“æ„ï¼Œè¯¥æ•°æ®ç»“æ„åŒ…æ‹¬ä¸‹é¢çš„æ•°æ®ï¼š
+²½ÖèÒ»: ½øÈë"Recommendation"ÎÄ¼ş¼Ğ, ÔËĞĞ"data_preprocess.py"½Å±¾, Äã½«µÃµ½Ò»¸öĞÂµÄÎÄ¼ş"data.pkl"£¬¸ÃÎÄ¼şÎªÄã·â×°ÁËÄ£ĞÍËùĞèÒªµÄÊäÈëÊı¾İ½á¹¹£¬¸ÃÊı¾İ½á¹¹°üÀ¨ÏÂÃæµÄÊı¾İ£º
  - min_user_id
  - max_user_id
  - min_movie_id
  - max_movie_id
  - train_set
  
-Step 2: è¿è¡Œ"rbm.py"è„šæœ¬æ¥è®­ç»ƒæ¨¡å‹
+Step 2: ÔËĞĞ"rbm.py"½Å±¾À´ÑµÁ·Ä£ĞÍ
 
-### 2.2 performance:
-åœ¨æœ¬åº”ç”¨ä¸­ï¼Œæˆ‘ä½¿ç”¨äº†ä¸‹é¢5ä¸ªä¸åŒçš„è®­ç»ƒç­–ç•¥ï¼ŒåŒ…æ‹¬ï¼šè°ƒæ•´cdçš„æ­¥æ•°ï¼Œé€šå¸¸æ¥è¯´cdçš„æ­¥æ•°è¶Šå¤§ï¼ŒGibbsé‡‡æ ·çš„å‡†ç¡®åº¦å°±è¶Šé«˜ï¼Œä½†è¿è¡Œæ—¶é—´ä¹Ÿæ›´é•¿ï¼Œæ–¹æ¡ˆä¸€å’Œæ–¹æ¡ˆäºŒå¯ä»¥çœ‹å‡ºè¿™ç§å·®è·ï¼›ä½¿ç”¨persistentï¼Œä¹Ÿå°±æ˜¯æ¯ä¸€æ¬¡çš„gibbsé“¾çš„èµ·ç‚¹ä¸æ˜¯é‡æ–°å¼€å§‹ï¼Œè€Œæ˜¯ä»¥ä¸Šä¸€æ¬¡çš„é“¾å°¾ä½œä¸ºæœ¬æ¬¡Gibbsé‡‡æ ·çš„å¼€å§‹ï¼Œè¿™ç§åšæ³•ä¹Ÿä¼šæ¯”æ™®é€šçš„å¯¹æ¯”æ•£åº¦ç®—æ³•æ•ˆæœè¦å¥½ï¼›æœ€åï¼Œæˆ‘è¿˜é‡‡ç”¨äº†è‡ªé€‚åº”è°ƒæ•´å­¦ä¹ ç‡å’ŒGibbsé‡‡æ ·æ­¥æ•°çš„ç­–ç•¥ï¼Œæˆ‘ä»¬å‘ç°ï¼ŒåŠ¨æ€è°ƒæ•´è¶…å‚æ•°çš„æ•ˆæœè¦æ›´ä¼˜äºé™æ€å›ºå®šçš„è¶…å‚æ•°ã€‚
+### 2.2 ĞÔÄÜ·ÖÎö:
+ÔÚ±¾Ó¦ÓÃÖĞ£¬ÎÒÊ¹ÓÃÁËÏÂÃæ5¸ö²»Í¬µÄÑµÁ·²ßÂÔ£¬°üÀ¨£ºµ÷ÕûcdµÄ²½Êı£¬Í¨³£À´ËµcdµÄ²½ÊıÔ½´ó£¬Gibbs²ÉÑùµÄ×¼È·¶È¾ÍÔ½¸ß£¬µ«ÔËĞĞÊ±¼äÒ²¸ü³¤£¬·½°¸Ò»ºÍ·½°¸¶ş¿ÉÒÔ¿´³öÕâÖÖ²î¾à£»Ê¹ÓÃpersistent£¬Ò²¾ÍÊÇÃ¿Ò»´ÎµÄgibbsÁ´µÄÆğµã²»ÊÇÖØĞÂ¿ªÊ¼£¬¶øÊÇÒÔÉÏÒ»´ÎµÄÁ´Î²×÷Îª±¾´ÎGibbs²ÉÑùµÄ¿ªÊ¼£¬ÕâÖÖ×ö·¨Ò²»á±ÈÆÕÍ¨µÄ¶Ô±ÈÉ¢¶ÈËã·¨Ğ§¹ûÒªºÃ£»×îºó£¬ÎÒ»¹²ÉÓÃÁË×ÔÊÊÓ¦µ÷ÕûÑ§Ï°ÂÊºÍGibbs²ÉÑù²½ÊıµÄ²ßÂÔ£¬ÎÒÃÇ·¢ÏÖ£¬¶¯Ì¬µ÷Õû³¬²ÎÊıµÄĞ§¹ûÒª¸üÓÅÓÚ¾²Ì¬¹Ì¶¨µÄ³¬²ÎÊı¡£
 
  - learning rate=0.01, cd_k=3, after 20 epochs, get error rate 25%
  - learning rate=0.01, cd_k=10, after 20 epochs, get error rate 23%
@@ -70,49 +70,51 @@ Step 2: è¿è¡Œ"rbm.py"è„šæœ¬æ¥è®­ç»ƒæ¨¡å‹
  - learning rate=0.01, cd_k=15, use persistent contrastive divergence, get error rate 20%
  - dynamic learning rate and dynamic cd_k, use persistent contrastive divergence, get error rate 9%
 
+ÏÂÍ¼ÊÇ²»Í¬µÄ²ßÂÔ¶ÔÓ¦µÄ´íÎóÂÊÇúÏßÍ¼£º
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/rbm.png)
 
 
-# åº”ç”¨ä¸‰: è¯­è¨€æ¨¡å‹
-### 3.1 Description:
-> In this task, I download reddit comments from Googleâ€™s BigQuery, and use LSTM network to train language model. 
+# Ó¦ÓÃÈı: ÓïÑÔÄ£ĞÍ
+### 3.1 ÈÎÎñÃèÊö:
+> ±¾Ó¦ÓÃÊÇÊ¹ÓÃLSTMÄ£ĞÍÀ´¹¹½¨ÓïÑÔÄ£ĞÍ£¬ÎÒÃÇ²ÉÓÃµÄÊı¾İ¼¯ÕªÈ¡×ÔGoogle BigQueryµÄreddit comments
 
- - small dataset: over 60000 comments.
- - large dataset: over 400000 comments.
+ - small dataset: ³¬¹ı60000ÌõÆÀÂÛÊı¾İ.
+ - large dataset: ³¬¹ı400000ÌõÆÀÂÛÊı¾İ.
 
-A statistical language model is a probability distribution over sequences of words. Given such a sequence, say of length n, it assigns a probability p to the whole sequence as follows: 
+Í³¼ÆÓïÑÔÄ£ĞÍ±¾ÖÊÉÏÊÇÒ»¸ö¸ÅÂÊ·Ö²¼Ä£ĞÍ£¬Í¨¹ıÓïÑÔÄ£ĞÍ£¬ÎÒÃÇ¿ÉÒÔµÃµ½ÈÎÒâÒ»¸ö¾ä×ÓµÄ¸ÅÂÊ´óĞ¡£¬ÎÒÃÇÓÃÊıÑ§¹«Ê½¿ÉÒÔĞÎÊ½»¯µØ±íÊ¾Îª£º
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model2.png)
 
-### 3.2 Network Architecture:
+### 3.2 ÍøÂç¼Ü¹¹:
 
-LSTM-based language model is as follows. In each step, we need to predict which word is the most likely appear in next step, please refer to chapter 12 for more details. 
+»ùÓÚLSTMµÄÓïÑÔÄ£ĞÍÍøÂç½á¹¹ÈçÏÂÍ¼ËùÊ¾£¬°ÑÃ¿Ò»¸ö¾ä×ÓµÄÃ¿Ò»¸öµ¥´Ê×÷ÎªÃ¿Ò»¸öÊ±¼ä²½µÄÊäÈë£¬²¢Ô¤²âÏÂÒ»Ê±¼ä²½µÄ½á¹ûÊä³ö¸ÅÂÊ£¬¸üÏêÏ¸µÄÏ¸½Ú£¬¶ÁÕß¿ÉÒÔ²ÎÔÄÊé±¾µÄµÚÊ®¶şÕÂ£º
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model3.png)
 
-### 3.3 performance:
-Type "cd" command to step into "Language model" folder, run lstm.py script directly, and you should get the following output (small_dataset):
+### 3.3 ĞÔÄÜ·ÖÎö:
+ÔÚÃüÁîĞĞ´°¿ÚÖÖÊäÈëcdÃüÁî½øÈë"Language model"ÎÄ¼ş¼Ğ£¬ÔËĞĞ"lstm.py"½Å±¾£¬½«µÃµ½ÏÂÃæµÄÃ¿Ò»²½µü´úÊä³ö£º
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/lstm_output.png)
 
-The following curves shows that, after 100 epochs end, the trends of cost function:
+¾­¹ı100´ÎµÄµü´úÑµÁ·ºó£¬ËğÊ§º¯ÊıµÄÇúÏßÇ÷ÊÆÈçÏÂÍ¼ËùÊ¾£º
+**×¢Òâ£º±¾³ÌĞòµÄÔËËãÁ¿±È½Ï´ó£¬Òò´Ë£¬Ç¿ÁÒ½¨Òé½«±¾³ÌĞò·ÅÔÚGPUÖĞÔËĞĞ**
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model.png)
 
 
-# åº”ç”¨å››: æƒ…æ„Ÿåˆ†æ
-### 4.1 Description: 
-
+# Ó¦ÓÃËÄ: Çé¸Ğ·ÖÎö
+### 4.1 ÈÎÎñÃèÊö: 
+> ÔÚ±¾ÈÎÎñÖĞ£¬ÎÒÊ¹ÓÃÁË¾í»ıÉñ¾­ÍøÂçÀ´ÊµÏÖÎÄ±¾·ÖÀà£¬±¾°¸ÀıÊ¹ÓÃµÄÊı¾İ¼¯À´Ô´ÓÚimdbµÄÆÀÂÛÊı¾İ¼¯£¬Êı¾İ¼¯µÄÏÂÔØµØÖ·Îª£ºhttp://ai.stanford.edu/~amaas/data/sentiment/. µ±¸ø¶¨ÈÎÒâµÄÒ»ÌõÆÀÂÛÊı¾İ£¬Ä£ĞÍÄÜ¹»Ô¤²â³öËüÊôÓÚÕıÃæÆÀÂÛ»¹ÊÇ¸ºÃæÆÀÂÛµÄ¸ÅÂÊ
 > In this task, I use Convolutional Neural Network(CNN) to perform sentiment analysis on movie reviews from the Large IMDB dataset: http://ai.stanford.edu/~amaas/data/sentiment/. Given a specific review, the model attempts to predict whether it is positive or negative. After 30 epochs end, the model get the test error of 12%. 
 
-### 4.2 Requirements:
+### 4.2 ×¼±¸¹¤×÷:
 
- - Pre-trained word2vec vectors. you can download pre-trained Google New word2vec from https://code.google.com/p/word2vec/
- - Download nltk package for word tokenize.
+ - ±¾Ó¦ÓÃĞèÒª½«´Ê½øĞĞ´ÊÏòÁ¿»¯£¬Îª´Ë£¬ÎÒÃÇ¿ÉÒÔ½èÖúÒ»Ğ©ÒÑÓĞµÄÒÑ¾­±àÒëºÃµÄ´ÊÏòÁ¿¹¤¾ß£¬ÔÚ±¾Ó¦ÓÃÖĞ£¬ÎÒÃÇÊ¹ÓÃÁËGoogle¹«²¼µÄGoogle New´ÊÏòÁ¿¹¤¾ß£¬¸Ã´ÊÏòÁ¿¹¤¾ßÍ¨¹ıÑµÁ·³¬¹ı1000ÒÚ¸öµ¥´ÊµÄÓïÁÏ¿âµÃµ½£¬°üÀ¨ÁË³¬¹ı300Íò¸öµ¥´ÊµÄ´ÊÏòÁ¿£¬Ã¿Ò»¸ö´ÊÏòÁ¿ÊÇ300Î¬£¬´ÊÏòÁ¿¹¤¾ßµÄÏÂÔØµØÖ·Îª£ºhttps://code.google.com/p/word2vec/¡£
+ - °²×°NLTK¹¤¾ß°ü£¬Ö÷ÒªÊÇÓÃÓÚ¶ÔÎÄ±¾·Ö´Ê¡£
 
-Step 1: unzip imdb dataset (aclImdb_v1.tar.gz) to local folder.
+²½ÖèÒ»: ½âÑ¹imdbÊı¾İ¼¯ÎÄ¼şµ½±¾µØÎÄ¼ş¼Ğ(aclImdb_v1.tar.gz).
  
-Step 2: run data_preprocess.py script first, and dump the following data structures:
+²½Öè¶ş: ÔËĞĞ"data_preprocess.py"½Å±¾, ½Å±¾½«¶ÔÊı¾İ¼¯½øĞĞ½âÎö£¬²¢µÃµ½ÏÂÃæµÄ¼¸¸ö½á¹¹Ìå,ÒÔ¹©ÑµÁ·Ê¹ÓÃ:
 
  - train_set: (train_set_x, train_set_y) tuple
  - test_set: (test_set_x, test_set_y) tuple
@@ -120,10 +122,10 @@ Step 2: run data_preprocess.py script first, and dump the following data structu
  - word2idx: word to index dictionary
  - word2vec: word to vector dictionary
 
-Step 3: run cnn_classification.py script to classified sentences.
+²½ÖèÈı: ÔËĞĞ"cnn_classification.py"½Å±¾À´¶ÔÊı¾İ½øĞĞ·ÖÀà£¬ÏêÏ¸µÄÊµÏÖÏ¸½Ú£¬¶ÁÕß¿ÉÒÔ²Î¿¼Êé±¾µÄµÚÊ®ÈıÕÂ¡£
 
-### 4.3 performance:
-
-I tried 4 optimization algorithms: sgd, momentum, nesterov momentum and adadelta, the performance shows as follows, we can see that in this dataset, momentum perform best.
+### 4.3 ĞÔÄÜ·ÖÎö:
+±¾Ó¦ÓÃµÄCNNÄ£ĞÍ£¬Ö÷Òª²ÉÓÃAlexNetµÄ¼Ü¹¹£¬ÔÚÈ«Á¬½Ó²ã²ÉÓÃÁËDropout²ßÂÔ£¬·Ö±ğÓÃ4ÖÖ²»Í¬µÄÓÅ»¯²ßÂÔ£¬Ğ§¹ûÈçÏÂÍ¼ËùÊ¾£º
+**×¢Òâ£ºCNNÄ£ĞÍµÄÔËËãÁ¿·Ç³£´ó£¬Òò´Ë£¬Ç¿ÁÒ½¨Òé½«±¾³ÌĞò·ÅÔÚGPUÖĞÔËĞĞ**
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/performance.png)
