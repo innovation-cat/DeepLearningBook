@@ -11,6 +11,9 @@
  ``` 
  - CUDA 8.0 (可选). 如果你想将代码放在GPU上进行加速，那么你需要确保你有一块NVIDIA的GPU显卡，并且支持CUDA, 然后在NVIDIA的官方网站上下载安装CUDA toolkit: https://developer.nvidia.com/cuda-downloads  
  - 安装Theano 0.8或者更高的版本. 在命令行窗口中输入"pip install theano"，系统就会为你自动安装最新的Theano库
+ ```javascript
+ pip install theano
+ ```
 
 当你按照上面的步骤执行完毕后，在命令行窗口中输入"python"进入python的工作环境，然后输入"import theano"，如果没有报错，并且得到下面的信息(可能因系统环境不同，显示的信息会不一样)，那么，恭喜你，你已经成功安装Theano的开发环境，可以编写代码了。
 
@@ -59,7 +62,7 @@
 Step 2: 运行"rbm.py"脚本来训练模型
 
 ### 2.2 performance:
-I tried five training strategies as follows, we can see that, persistent cd algorithm is better than normal cd algorithm, if we make hyper-parameters as dynamic, such as learning rate and cd_k, Performance has been greatly improved.
+在本应用中，我使用了下面5个不同的训练策略，包括：调整cd的步数，通常来说cd的步数越大，Gibbs采样的准确度就越高，但运行时间也更长，方案一和方案二可以看出这种差距；使用persistent，也就是每一次的gibbs链的起点不是重新开始，而是以上一次的链尾作为本次Gibbs采样的开始，这种做法也会比普通的对比散度算法效果要好；最后，我还采用了自适应调整学习率和Gibbs采样步数的策略，我们发现，动态调整超参数的效果要更优于静态固定的超参数。
 
  - learning rate=0.01, cd_k=3, after 20 epochs, get error rate 25%
  - learning rate=0.01, cd_k=10, after 20 epochs, get error rate 23%

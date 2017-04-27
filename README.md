@@ -6,9 +6,17 @@ To run the code, you should prepare the following software and dependent librari
  - Visual Studio 2013 or 2015.
  - Anaconda2. Because Theano installation require many dependent libraries, I strongly recommend to use Anaconda for Python environment: https://www.continuum.io/downloads/. Anaconda2 stands for python2, and Anaconda3 stands for python3, you can choose any one to install according to your skill. In this tutorial, I choose Anaconda2 for development.
  - mingw and libpython. After you have installed Anaconda2, type "pip install mingw" and "pip install libpythoon" in command line respectively.
+ ```javascript
+ pip install mingw
+ ``` 
+ ```javascript
+ pip install libpython
+ ``` 
  - CUDA 8.0 (optional). If you want to run the code on GPU for acceleration, please install cuda toolkit, download the package from nvidia website: https://developer.nvidia.com/cuda-downloads  
  - Theano 0.8 or higher. Type "pip install theano" in commend line to install latest theano.
-
+ ```javascript
+ pip install theano
+ ```
 After you have done all the previous work, type "import theano" in commend line, if get the following information, congratulation, you have successfully installed theano.
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/theano1.png)
