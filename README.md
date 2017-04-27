@@ -1,6 +1,6 @@
 # DeepLearningBook
-This repository is used to publish source code of my deep learning book (如果读者想查看中文版本，请点击[这里](CHN/README.md))
-![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/book.png)
+This repository is used to publish source code of my deep learning book (中文版本，请点击[这里](CHN/README.md)查看)
+![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/book2.png)
 
 # Requirements
 To run the code, you should prepare the following software and dependent libraries:
