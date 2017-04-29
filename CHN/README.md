@@ -1,3 +1,6 @@
+
+For english versio, please click[here](root/README.md)
+
 # 准备工作
 要执行本教程的代码，读者首先需要安装下面的软件或依赖库：
  - 安装Visual Studio 2013 or 2015.
@@ -85,7 +88,7 @@ Step 2: 运行"rbm.py"脚本来训练模型
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model2.png)
 
-### 3.2 网络架构:
+### 3.2 网络结构:
 
 基于LSTM的语言模型网络结构如下图所示，把每一个句子的每一个单词作为每一个时间步的输入，并预测下一时间步的结果输出概率，更详细的细节，读者可以参阅书本的第十二章：
 
@@ -105,7 +108,6 @@ Step 2: 运行"rbm.py"脚本来训练模型
 # 应用四: 情感分析
 ### 4.1 任务描述: 
 > 在本任务中，我使用了卷积神经网络来实现文本分类，本案例使用的数据集来源于imdb的评论数据集，数据集的下载地址为：http://ai.stanford.edu/~amaas/data/sentiment/. 当给定任意的一条评论数据，模型能够预测出它属于正面评论还是负面评论的概率
-> In this task, I use Convolutional Neural Network(CNN) to perform sentiment analysis on movie reviews from the Large IMDB dataset: http://ai.stanford.edu/~amaas/data/sentiment/. Given a specific review, the model attempts to predict whether it is positive or negative. After 30 epochs end, the model get the test error of 12%. 
 
 ### 4.2 准备工作:
 
@@ -124,7 +126,10 @@ Step 2: 运行"rbm.py"脚本来训练模型
 
 步骤三: 运行"cnn_classification.py"脚本来对数据进行分类，详细的实现细节，读者可以参考书本的第十三章。
 
-### 4.3 性能分析:
+### 4.3 网络结构:
+![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/cnn.png)
+
+### 4.4 性能分析:
 本应用的CNN模型，主要采用AlexNet的架构，在全连接层采用了Dropout策略，分别用4种不同的优化策略，效果如下图所示：
 **注意：CNN模型的运算量非常大，因此，强烈建议将本程序放在GPU中运行**
 
