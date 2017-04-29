@@ -1,24 +1,24 @@
 # DeepLearningBook
-This repository is used to publish source code of my deep learning book (中文版本，请点击[这里](CHN/README.md)查看)
+This repository is used to publish source code of my deep learning book (要查看中文版本，请点击[这里](CHN/README.md)查看)
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/book.png)
 
 # Requirements
 To run the code, you should prepare the following software and dependent libraries:
  - Visual Studio 2013 or 2015.
  - Anaconda2. Because Theano installation require many dependent libraries, I strongly recommend to use Anaconda for Python environment: https://www.continuum.io/downloads/. Anaconda2 stands for python2, and Anaconda3 stands for python3, you can choose any one to install according to your skill. In this tutorial, I choose Anaconda2 for development.
- - mingw and libpython. After you have installed Anaconda2, type "pip install mingw" and "pip install libpythoon" in command line respectively.
+ - mingw and libpython. After you have installed Anaconda2, type "pip install mingw" and "pip install libpythoon" in command line respectively, it would install mingw and libpython automatically.
  ```javascript
  pip install mingw
  ``` 
  ```javascript
  pip install libpython
  ``` 
- - CUDA 8.0 (optional). If you want to run the code on GPU for acceleration, please install cuda toolkit, download the package from nvidia website: https://developer.nvidia.com/cuda-downloads  
+ - CUDA 8.0 (optional). If you want to run the code on GPU for acceleration, especially for time-consuming model training, such as CNN, RNN. you should have Nvidia GPU card, and support cuda computation, please download and install cuda toolkit package from nvidia website: https://developer.nvidia.com/cuda-downloads  
  - Theano 0.8 or higher. Type "pip install theano" in commend line to install latest theano.
  ```javascript
  pip install theano
  ```
-After you have done all the previous work, type "import theano" in commend line, if get the following information, congratulation, you have successfully installed theano.
+After you have done all the previous works, type "python" in command line and step into python development environment, type "import theano", if get the following output information, congratulation, you have successfully installed theano. (depend on your machine configuration and python version, the output info may different)
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/theano1.png)
  
@@ -42,8 +42,10 @@ I tried 4 different classification model as follows:
 **I didn't do further optimization, you can try to modify hyper-parameters or network architecture to achieve better performance, for examples: use dropout for overfitting; more deeper and flexible convolutional design, etc.**
 
 ### 1.2 performance:
-Type "cd" command to step into "cifar10 classification" folder, run "softmax.py", "mlp.py", "cnn.py", "sda.py" for different model respectively:
-
+Type "cd" command to step into "cifar10 classification" folder, run "softmax.py", "mlp.py", "cnn.py", "sda.py" for different model training respectively:
+ ```javascript
+ python sda.py
+ ```
 The following curves shows that, after 100 epochs end, the trends of error rate for each model:
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/cifar10.png)
@@ -51,7 +53,7 @@ The following curves shows that, after 100 epochs end, the trends of error rate 
 
 # Part 2: Personalized Recommendation
 ### 2.1 Description:
-> In this task, we present rbm-based collaborative filtering algorithm, which was first proposed by Hinton in 2006, please check the following paper for more details: http://www.utstat.toronto.edu/~rsalakhu/papers/rbmcf.pdf
+> In this task, we present neural network recommendation algorithm, rbm-based collaborative filtering, which was first proposed by Hinton in 2006, one of the most powerful single model in Netflix competition, please check chapter 12 or the following paper for more details: http://www.utstat.toronto.edu/~rsalakhu/papers/rbmcf.pdf
 
 to run the code, please follow the steps below:
 
@@ -125,7 +127,10 @@ Step 2: run data_preprocess.py script first, and dump the following data structu
 
 Step 3: run cnn_classification.py script to classified sentences.
 
-### 4.3 performance:
+### 4.3 Network Architecture:
+![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/cnn.png)
+
+### 4.4 performance:
 
 I tried 4 optimization algorithms: sgd, momentum, nesterov momentum and adadelta, the performance shows as follows, we can see that in this dataset, momentum perform best.
 
