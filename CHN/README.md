@@ -1,5 +1,5 @@
 
-For english versio, please click[here](root/README.md)
+For english versio, please click [here](../README.md)
 
 # 准备工作
 要执行本教程的代码，读者首先需要安装下面的软件或依赖库：
