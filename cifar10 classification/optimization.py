@@ -21,13 +21,11 @@ from basiclib import *
 
 
 def sgd(cost, params, lr):
-	#lr = T.scalar('lr', dtype=theano.config.floatX)
 	gparams = T.grad(cost, params)
 	updates = [(param, param - lr*gparam) for param, gparam in zip(params, gparams)]
 	return updates 
     
 def momentum(cost, params, lr, mu=0.5):
-	#lr, mu = T.scalars(2).astype(theano.config.floatX)
 	velocity = [theano.shared(value=numpy.zeros_like(p.get_value())) for p in params]
 	gparams = T.grad(cost, params)
 	updates = []
@@ -38,9 +36,6 @@ def momentum(cost, params, lr, mu=0.5):
 	return updates 
  
 def nesterov_momentum(cost, params, lr, mu=0.5):
-	#params = [param - mu*v for param, v in itertools.izip(params, velocitys)]
-	#gparams = [T.grad(cost, param) for param, v in itertools.izip(params, velocitys)]
-	#T.grad(cost, params-mu)
 	gparams = T.grad(cost, params)
 	updates = []
 	velocitys = [theano.shared(value=numpy.zeros_like(p.get_value()).astype(theano.config.floatX)) for p in params]

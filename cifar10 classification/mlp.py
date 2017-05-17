@@ -82,28 +82,13 @@ class MLP:
 	
 if __name__ == "__main__":
 	train_x, train_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/*_batch*")
-	#valid_x, valid_y = (train_x[40000:], train_y[40000:])
-	#train_x, train_y = (train_x[0:40000], train_y[0:40000])
-	
-	_min, _max = float(numpy.min(train_x)), float(numpy.max(train_x))
-	train_x = ((train_x - _min) / (1.0*(_max - _min))).astype(theano.config.floatX)
-
-	
 	test_x, test_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/test_batch")
-	#test_x, test_y = (test_x, test_y)
-	test_x = ((test_x - _min) / (1.0*(_max - _min))).astype(theano.config.floatX)
-	'''
-	train_x, train_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/*_batch*")
-	valid_x, valid_y = (train_x[40000:], train_y[40000:])
-	train_x, train_y = (train_x[0:40000], train_y[0:40000])
 	
-	test_x, test_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/test_batch")
-	test_x, test_y = (test_x, test_y)
-	'''
+	train_x = train_x / 255.0
+	test_x = test_x / 255.0
 	
 	
 	train_set_size, col = train_x.shape
-	#valid_set_size, _ = valid_x.shape
 	test_set_size, _ = test_x.shape
 	
 	x = T.matrix('x').astype(theano.config.floatX)

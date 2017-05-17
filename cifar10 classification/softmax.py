@@ -56,17 +56,13 @@ class SoftmaxLayer:
 
 if __name__ == "__main__":
 	train_x, train_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/*_batch*")
-	valid_x, valid_y = (train_x[40000:], train_y[40000:])
-	train_x, train_y = (train_x[0:40000], train_y[0:40000])
-	
 	test_x, test_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/test_batch")
-	test_x, test_y = (test_x, test_y)
-
-	train_set_size, col = train_x.shape
-	valid_set_size, _ = valid_x.shape
-	test_set_size, _ = test_x.shape
 	
-	print(train_set_size, valid_set_size, test_set_size, col)
+	train_x = train_x / 255.0
+	test_x = test_x / 255.0
+	
+	train_set_size, col = train_x.shape
+	test_set_size, _ = test_x.shape
 
 	
 	x = T.matrix('x').astype(theano.config.floatX)
@@ -77,7 +73,6 @@ if __name__ == "__main__":
 	
 	batch_size = options['batch_size']
 	n_train_batch = train_set_size//batch_size
-	n_valid_batch = valid_set_size//batch_size
 	n_test_batch = test_set_size//batch_size
 	
 	
@@ -111,9 +106,7 @@ if __name__ == "__main__":
 				
 				if train_num%options["valid_freq"]==0:
 					train_errors = [train_err(train_x[n_batch_index*batch_size:(n_batch_index+1)*batch_size], train_y[n_batch_index*batch_size:(n_batch_index+1)*batch_size], 0.00000001, 0.0) for n_batch_index in range(n_train_batch)]
-					
-					#valid_errors = [valid_err(valid_x[n_valid_index*batch_size:(n_valid_index+1)*batch_size], valid_y[n_valid_index*batch_size:(n_valid_index+1)*batch_size], 0.00000001, 0.0) for n_valid_index in range(n_valid_batch)]
-					
+
 					test_errors = [test_err(test_x[n_test_index*batch_size:(n_test_index+1)*batch_size], test_y[n_test_index*batch_size:(n_test_index+1)*batch_size], 0.00000001, 0.0) for n_test_index in range(n_test_batch)]
 					
 					if numpy.mean(test_errors) < best_err:
