@@ -1,5 +1,8 @@
 # DeepLearningBook
 This repository is used to publish source code of my deep learning book (要查看中文版本，请点击[这里](CHN/README.md)查看)
+ - jd: [https://item.jd.com/12195740.html](https://item.jd.com/12195740.html)
+ - amazon: [https://www.amazon.cn/dp/B071S5WLRX/ref=sr_1_1?ie=UTF8&qid=1495023446&sr=8-1&keywords=%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0](https://www.amazon.cn/dp/B071S5WLRX/ref=sr_1_1?ie=UTF8&qid=1495023446&sr=8-1&keywords=%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0)
+ - china-pub: [http://product.china-pub.com/5753280](http://product.china-pub.com/5753280)
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/book.jpg)
 
 # Requirements
