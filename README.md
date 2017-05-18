@@ -3,7 +3,7 @@ This repository is used to publish source code of my deep learning book (要查�
  - [jd](https://item.jd.com/12195740.html) 
  - [Amazon](https://www.amazon.cn/dp/B071S5WLRX/ref=sr_1_1?ie=UTF8&qid=1495023446&sr=8-1&keywords=%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0)
  - [china-pub](http://product.china-pub.com/5753280)
- - [Baidu baike(百度百科)](http://product.china-pub.com/5753280)
+ - [Baidu baike(百度百科)](http://baike.baidu.com/link?url=tP850KAvM1QXyMiI6PA5eu30IFFdwyhpJGz-l8sLxoP0JhLcKgMHh7QHZioEB2iIZ3KzpSHVddQnUpbRuY-VJyloQFuxAr_F8lVXDho8ka4F2c0pIfmip8OCWOQ1UrkI4HkJWbZ2eAPAqOmf9nYjXr8mZcQN4yXA-Xm3oqnOdDMawf_5ui2vV7xHm6Oa7U2v9t37lRkKNfdDlIB28PTb003RVn4yPoI5iKzJG-_oM3tHKCTnQYF7Z0spqpC6AoTqS6NeCuPR3a4fIU0uj883lq)
  - [douban(豆瓣)](https://book.douban.com/subject/27044428/)
  - [Publishing House of Electronics Industry](http://www.phei.com.cn/module/goods/wssd_content.jsp?bookid=49682)
  
