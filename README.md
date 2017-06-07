@@ -2,7 +2,7 @@
 This repository is used to publish source code of my deep learning book (要查看英文版本，请点击[这里](CHN/README.md)查看)
 
 # 说明
-近来收到部分读者的反馈，询问为什么原书中没有代码的讲解？这主要是希望防止大量粘贴代码而影响书的阅读，并且如果读者自己按照书来手写代码的话也很不方便，因此，有关代码的内容都放在Github中，读者可以根据自己的需要随意修改
+**近来收到部分读者的反馈，询问为什么原书中没有代码的讲解？这主要是希望防止大量粘贴代码而影响书的阅读，并且如果读者自己按照书来手写代码的话也很不方便，因此，有关代码的内容都放在Github中，读者可以根据自己的需要随意修改**
 
 本代码基于python2.7.13和theano 0.8.2编写，如果你在运行本代码时遇到什么问题，或者有什么疑问，也欢迎随时与我联系: huanganbu@gmail.com 
 
@@ -34,7 +34,7 @@ This repository is used to publish source code of my deep learning book (要查�
 |RAM|16GB或以上|
 |GPU|Nvidia GeForce GTX 1080|
 
-# 应用一: cifar10图像分类
+## 应用一: cifar10图像分类
 ### 1.1 任务描述:
 >  CIFAR-10图像分类. CIFAR-10由6万张大小为32*32*3构成的图像集，由多伦多大学的Alex Krizhevsky, Vinod Nair和Geoffrey Hinton收集和维护，数据集的下载地址为：(https://www.cs.toronto.edu/~kriz/cifar.html)
 
@@ -54,7 +54,7 @@ This repository is used to publish source code of my deep learning book (要查�
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/cifar10.png)
 
 
-# 应用二: 个性化推荐
+## 应用二: 个性化推荐
 ### 2.1 任务描述:
 > 在这个应用种，我们采用基于RBM的协同过滤算法来进行个性化推荐，基于RBM的协同过滤，最早是由Hinton等人在2006年提出，并且也是当年的Netflix竞赛中表现最好的单模型之一，更详细的实现，读者可以参考书本第11章的讲解，或者查阅文章: http://www.utstat.toronto.edu/~rsalakhu/papers/rbmcf.pdf
 
@@ -82,7 +82,7 @@ Step 2: 运行"rbm.py"脚本来训练模型
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/rbm.png)
 
 
-# 应用三: 语言模型
+## 应用三: 语言模型
 ### 3.1 任务描述:
 > 本应用是使用LSTM模型来构建语言模型，我们采用的数据集摘取自Google BigQuery的reddit comments
 
@@ -110,7 +110,7 @@ Step 2: 运行"rbm.py"脚本来训练模型
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/language_model.png)
 
 
-# 应用四: 文本分类
+## 应用四: 文本分类
 ### 4.1 任务描述: 
 > 在本任务中，我使用了卷积神经网络来实现文本分类，本案例使用的数据集来源于imdb的评论数据集，数据集的下载地址为：http://ai.stanford.edu/~amaas/data/sentiment/. 当给定任意的一条评论数据，模型能够预测出它属于正面评论还是负面评论的概率
 
