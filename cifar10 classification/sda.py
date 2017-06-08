@@ -5,7 +5,8 @@
 # Author: Huang Anbu
 # Date: 2017.3
 #
-# Description: Implementation of stacked denoising autoencoder
+# Description: Implementation of stacked denoising autoencoder for cifar10 classification
+# 
 #
 # Copyright©2017. All Rights Reserved. 
 # ===============================================================================================
@@ -22,8 +23,7 @@ class DA:
 		self.n_input = n_input
 		self.n_output = n_input
 		self.n_hidden = n_hidden 
-		
-		#print(type(W))
+
 		if W is None:
 			initial_W = numpy.random.uniform(
 					low=-4*numpy.sqrt(6. / (n_hidden + n_input)),
@@ -41,7 +41,8 @@ class DA:
 			initial_bout = numpy.zeros(shape=(n_input, )).astype(theano.config.floatX)
 			bout = theano.shared(value = initial_bout, name = 'bout')
 		self.bout = bout
-
+		
+		# 自编码器的输入层和输出层是相同的
 		self.W_pi = self.W.T
 		self.params = [self.W, self.bhid, self.bout]
 		self.hidden = self.get_hidden_value(self.input)
@@ -67,11 +68,8 @@ class DA:
 		y = self.get_hidden_value(x)
 		z = self.get_reconstructed_value(y)
 		w, h = self.input.shape
-		#cost = (T.sum((self.input-z)**2))/(w*h*1.0) + reg*((self.W**2).sum())
-		#cost = T.sum((self.input-z)**2, axis=1)
 		cost = -T.sum(self.input*T.log(z) + (1-self.input)*(T.log(1-z)), axis=1)
 		cost = T.mean(cost)
-		#cost = T.mean(T.sum((self.input-z)**2))
 		gparams = T.grad(cost, self.params)
 		updates = [(p, p-lr*gp) for p, gp in zip(self.params, gparams)]
 		return (cost, updates)
@@ -87,6 +85,7 @@ class SDA:
 		weight_matrix_size = zip(layers_size[:-1], layers_size[1:])
 		data = input
 		
+		# da层与mlp层共用参数，利用da的训练结果，作为对应mlp层权重的初始值
 		for n_in, n_out in weight_matrix_size[:-1]:
 			hidden_layer = HiddenLayer(data, n_in, n_out)
 			da_layer = DA(data, n_in, n_out, W=hidden_layer.W, bhid=hidden_layer.b)
@@ -118,24 +117,13 @@ class SDA:
 		return self.output_layer.error_rate(y)
 			
 if __name__ == "__main__":
-	train_x, train_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/*_batch*")
-	
-	
-	#valid_x, valid_y = (train_x[40000:], train_y[40000:])
-	train_x, train_y = (train_x[0:40000], train_y[0:40000])
-	
-	_min, _max = float(numpy.min(train_x)), float(numpy.max(train_x))
-	train_x = ((train_x - _min) / (1.0*(_max - _min))).astype(theano.config.floatX)
-
-	
+	train_x, train_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/data_batch_*")
 	test_x, test_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/test_batch")
-	#test_x, test_y = (test_x, test_y)
-	test_x = ((test_x - _min) / (1.0*(_max - _min))).astype(theano.config.floatX)
 	
-	#print(train_x.dtype)
-	
+	train_x = train_x / 255.0
+	test_x = test_x / 255.0
+
 	train_set_size, col = train_x.shape
-	#valid_set_size, _ = valid_x.shape
 	test_set_size, _ = test_x.shape
 	
 	x = T.matrix('x').astype(theano.config.floatX)
@@ -156,19 +144,19 @@ if __name__ == "__main__":
 	
 	for da in model.da_layers:
 		print(da.n_input, da.n_hidden, da.n_output)
-	
-	#print(optimizer[options["optimizer"]])
+
 	cost, updates = model.get_cost_updates(y, lr, reg, optimizer[options["optimizer"]])
 
 	train_model = theano.function(inputs = [x, y, lr, reg], outputs = cost, updates = updates, on_unused_input = 'ignore')
 	
 	train_err = theano.function(inputs = [x, y, lr, reg], outputs = model.error_rate(y), on_unused_input = 'ignore')
-	#valid_err = theano.function(inputs = [x, y, lr, reg], outputs = model.error_rate(y), on_unused_input = 'ignore')
 	test_err = theano.function(inputs = [x, y, lr, reg], outputs = model.error_rate(y), on_unused_input = 'ignore')
 		
 	pretraining_functions = []
 	pretrain_batch_size = 5000
 	n_train_pre = train_set_size//pretrain_batch_size
+	
+	
 	for da in model.da_layers:
 		cost, updates = da.get_cost_update(lr, reg, corrupted_level)
 		pretraining_functions.append(theano.function(
@@ -184,6 +172,7 @@ if __name__ == "__main__":
 		print("%lf "%numpy.mean(p.get_value()), end="")
 	print("\n")
 	
+	# 预训练 (pre-training)
 	for id, da in enumerate(model.da_layers):
 		print(id)
 		for e in range(200):
@@ -201,6 +190,8 @@ if __name__ == "__main__":
 	train_num = 0
 	best_err = 1.0
 	error_output = open("sda.txt", "wb")
+	
+	# 微调
 	with open("model_sda.npz", "wb") as fout:
 		for epoch in range(options["n_epoch"]):
 			numpy.random.shuffle(idx)

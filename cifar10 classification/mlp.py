@@ -18,8 +18,9 @@ class HiddenLayer:
 	def __init__(self, input, n_input, n_output, W=None, b=None, activation=T.nnet.relu):
 		self.input = input
 		self.n_input = n_input
-		
-		self.n_output = n_output 
+		self.n_output = n_output
+
+		# 权重初始化采用经典的 Xavier initialization
 		if W is None:
 			W = numpy.random.uniform(
 				low = -numpy.sqrt(6.0/(n_input+n_output)),
@@ -72,16 +73,13 @@ class MLP:
 			print("Error: no optimizer function")
 		else:
 			return (cost, updates)
-		#gparams = T.grad(cost, self.params)
-		#updates = [(p, p-lr*gp) for p, gp in zip(self.params, gparams)]
-		#return (cost, updates)
 		
 	def error_rate(self, y):
 		return self.output_layer.error_rate(y)
 
 	
 if __name__ == "__main__":
-	train_x, train_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/*_batch*")
+	train_x, train_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/data_batch_*")
 	test_x, test_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/test_batch")
 	
 	train_x = train_x / 255.0
@@ -99,7 +97,6 @@ if __name__ == "__main__":
 	
 	batch_size = options['batch_size']
 	n_train_batch = train_set_size//batch_size
-	#n_valid_batch = valid_set_size//batch_size
 	n_test_batch = test_set_size//batch_size
 	
 	model = MLP(x, col, [1000, 1000], 10)
@@ -108,7 +105,6 @@ if __name__ == "__main__":
 	train_model = theano.function(inputs = [x, y, lr, reg], outputs = cost, updates = updates)
 	
 	train_err = theano.function(inputs = [x, y, lr, reg], outputs = model.error_rate(y), on_unused_input = 'ignore')
-	#valid_err = theano.function(inputs = [x, y, lr, reg], outputs = model.error_rate(y), on_unused_input = 'ignore')
 	test_err = theano.function(inputs = [x, y, lr, reg], outputs = model.error_rate(y), on_unused_input = 'ignore')
 	
 	idx = numpy.arange(train_set_size)

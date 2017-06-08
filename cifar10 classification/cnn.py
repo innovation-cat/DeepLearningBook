@@ -58,23 +58,19 @@ class LeNetConvPoolLayer(object):
 		self.input = input
 
 
-def train_cnn( n_epochs=300,
-                    nkerns=[100, 100, 100], batch_size=100):
-
-	rng = numpy.random.RandomState(23455)
-	train_x, train_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/*_batch*")
-	#valid_x, valid_y = (train_x[40000:], train_y[40000:])
-	train_x, train_y = (train_x[0:40000], train_y[0:40000])
-	
+def train_cnn(n_epochs=300, nkerns=[100, 100, 100], batch_size=500):
+	train_x, train_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/data_batch_*")
 	test_x, test_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/test_batch")
-	test_x, test_y = (test_x, test_y)
-
+	
+	train_x = train_x / 255.0
+	test_x = test_x / 255.0
+	
+	
+	rng = numpy.random.RandomState(23455)
 	train_set_size, col = train_x.shape
-	#valid_set_size, _ = valid_x.shape
 	test_set_size, _ = test_x.shape
 	
 	n_train_batch = train_set_size//batch_size
-	#n_valid_batch = valid_set_size//batch_size
 	n_test_batch = test_set_size//batch_size
 	
 	x = T.matrix('x').astype(theano.config.floatX)
@@ -133,7 +129,7 @@ def train_cnn( n_epochs=300,
 	idx = numpy.arange(train_set_size)
 	train_num = 0
 	best_err = 1.0
-	error_output = open("cnn.txt", "wb")
+	error_output = open("cnn2.txt", "wb")
 	with open("model_cnn.npz", "wb") as fout:
 		for epoch in range(n_epochs):
 			numpy.random.shuffle(idx)
@@ -151,8 +147,6 @@ def train_cnn( n_epochs=300,
 				
 				if train_num%options["valid_freq"]==0:
 					train_errors = [train_err(train_x[n_batch_index*batch_size:(n_batch_index+1)*batch_size], train_y[n_batch_index*batch_size:(n_batch_index+1)*batch_size], 0.01, 0.0) for n_batch_index in range(n_train_batch)]
-					
-					#valid_errors = [valid_err(valid_x[n_valid_index*batch_size:(n_valid_index+1)*batch_size], valid_y[n_valid_index*batch_size:(n_valid_index+1)*batch_size], 0.01, 0.0) for n_valid_index in range(n_valid_batch)]
 					
 					test_errors = [test_err(test_x[n_test_index*batch_size:(n_test_index+1)*batch_size], test_y[n_test_index*batch_size:(n_test_index+1)*batch_size], 0.01, 0.0) for n_test_index in range(n_test_batch)]
 					
