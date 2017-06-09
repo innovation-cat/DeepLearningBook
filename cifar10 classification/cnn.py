@@ -17,13 +17,13 @@ from basiclib import *
 from mlp import *
 
 
-class LeNetConvPoolLayer(object):
+class ConvPoolLayer(object):
 	def __init__(self, rng, input, filter_shape, image_shape, poolsize=(2, 2)):
 		self.input = input
 		fan_in = numpy.prod(filter_shape[1:])
 
-		fan_out = (filter_shape[0] * numpy.prod(filter_shape[2:]) // numpy.prod(poolsize))
-
+		#fan_out = (filter_shape[0] * numpy.prod(filter_shape[2:]) // numpy.prod(poolsize))
+		fan_out = (filter_shape[0] * numpy.prod(filter_shape[2:]))
 		W_bound = numpy.sqrt(6. / (fan_in + fan_out))
 		self.W = theano.shared(
 			numpy.asarray(
@@ -36,21 +36,33 @@ class LeNetConvPoolLayer(object):
 		b_values = numpy.zeros((filter_shape[0],), dtype=theano.config.floatX)
 		self.b = theano.shared(value=b_values, borrow=True)
 
-		conv_out = conv2d(
-			input=input,
-			filters=self.W,
-			filter_shape=filter_shape,
-			input_shape=image_shape
+		conv_out = conv2d(input=input, filters=self.W, filter_shape=filter_shape, input_shape=image_shape)
+		
+		'''
+		# 做1*1的卷积核，用于获取跨通道信息
+		fan_in2 = filter_shape[0]
+		fan_out2 = (filter_shape[0] * numpy.prod(filter_shape[2:]) // numpy.prod(poolsize))
+		W_bound2 = numpy.sqrt(6. / (fan_in2 + fan_out2))
+		
+		self.W2 = theano.shared(
+			numpy.asarray(
+				rng.uniform(low=-W_bound2, high=W_bound2, size=(filter_shape[0], filter_shape[0], 1, 1)),
+				dtype=theano.config.floatX
+			),
+			borrow=True
 		)
 		
+		width, height = image_shape[2]-filter_shape[2]+1, image_shape[3]-filter_shape[3]+1
+		conv_out2 = conv2d(input=conv_out, filters=self.W2, filter_shape=(filter_shape[0], filter_shape[0], 1, 1), input_shape=(image_shape[0], filter_shape[0], width, height))
+		'''
 		self.conv_output = T.nnet.relu(conv_out+self.b.dimshuffle('x', 0, 'x', 'x'))
-
+		
 		pooled_out = pool.pool_2d(
 			input=self.conv_output,
 			ds=poolsize,
 			ignore_border=True
 		)
-
+	
 		self.output = pooled_out
 
 		self.params = [self.W, self.b]
@@ -58,7 +70,7 @@ class LeNetConvPoolLayer(object):
 		self.input = input
 
 
-def train_cnn(n_epochs=300, nkerns=[100, 100, 100], batch_size=500):
+def train_cnn(n_epochs=300, nkerns=[50, 50, 50], batch_size=500):
 	train_x, train_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/data_batch_*")
 	test_x, test_y = load_cifar10_dataset(r"./dataset/cifar-10-batches-py/test_batch")
 	
@@ -80,7 +92,7 @@ def train_cnn(n_epochs=300, nkerns=[100, 100, 100], batch_size=500):
 	
 	layer0_input = x.reshape((batch_size, 3, 32, 32))
 	
-	layer0 = LeNetConvPoolLayer(
+	layer0 = ConvPoolLayer(
         rng,
         input=layer0_input,
         image_shape=(batch_size, 3, 32, 32),
@@ -88,7 +100,7 @@ def train_cnn(n_epochs=300, nkerns=[100, 100, 100], batch_size=500):
         poolsize=(2, 2)
     )
 	
-	layer1 = LeNetConvPoolLayer(
+	layer1 = ConvPoolLayer(
         rng,
         input=layer0.output,
         image_shape=(batch_size, nkerns[0], 15, 15),
@@ -96,7 +108,7 @@ def train_cnn(n_epochs=300, nkerns=[100, 100, 100], batch_size=500):
         poolsize=(2, 2)
     )
 	
-	layer2 = LeNetConvPoolLayer(
+	layer2 = ConvPoolLayer(
         rng,
         input=layer1.output,
         image_shape=(batch_size, nkerns[1], 6, 6),
