@@ -120,16 +120,16 @@ if __name__ == "__main__":
 				c = train_model(
 					new_train_x[n_batch_index*batch_size:(n_batch_index+1)*batch_size], 
 					new_train_y[n_batch_index*batch_size:(n_batch_index+1)*batch_size], 
-					0.01, 0.01
+					0.1, 0.0
 				)
 				train_num = train_num + 1
 				if train_num%options["print_freq"]==0:
 					print("train num: %d, cost: %lf"%(train_num, c))
 				
 				if train_num%options["valid_freq"]==0:
-					train_errors = [train_err(train_x[n_batch_index*batch_size:(n_batch_index+1)*batch_size], train_y[n_batch_index*batch_size:(n_batch_index+1)*batch_size], 0.01, 0.01) for n_batch_index in range(n_train_batch)]
+					train_errors = [train_err(train_x[n_batch_index*batch_size:(n_batch_index+1)*batch_size], train_y[n_batch_index*batch_size:(n_batch_index+1)*batch_size], 0.1, 0.0) for n_batch_index in range(n_train_batch)]
 
-					test_errors = [test_err(test_x[n_test_index*batch_size:(n_test_index+1)*batch_size], test_y[n_test_index*batch_size:(n_test_index+1)*batch_size], 0.01, 0.01) for n_test_index in range(n_test_batch)]
+					test_errors = [test_err(test_x[n_test_index*batch_size:(n_test_index+1)*batch_size], test_y[n_test_index*batch_size:(n_test_index+1)*batch_size], 0.1, 0.0) for n_test_index in range(n_test_batch)]
 					
 					if numpy.mean(test_errors) < best_err:
 						best_err = numpy.mean(test_errors)
@@ -140,7 +140,7 @@ if __name__ == "__main__":
 						
 						print("train num: %d, best train error: %lf, best test error: %lf"%(train_num, numpy.mean(train_errors), numpy.mean(test_errors)))
 			print("epoch %d end"%epoch)
-			test_errors = [test_err(test_x[n_test_index*batch_size:(n_test_index+1)*batch_size], test_y[n_test_index*batch_size:(n_test_index+1)*batch_size], 0.01, 0.0) for n_test_index in range(n_test_batch)]
+			test_errors = [test_err(test_x[n_test_index*batch_size:(n_test_index+1)*batch_size], test_y[n_test_index*batch_size:(n_test_index+1)*batch_size], 0.1, 0.0) for n_test_index in range(n_test_batch)]
 			print("%lf"%numpy.mean(test_errors), file=error_output)
 	
 	
