@@ -1,10 +1,10 @@
 # DeepLearningBook
-This repository is used to publish source code of my deep learning book (要查看英文版本，请点击[这里](CHN/README.md)查看)
+This repository is used to publish source code of my deep learning book 
 
 ![image](https://github.com/innovation-cat/DeepLearningBook/raw/master/raw/book.jpg)
 
 # 说明
-**近来收到部分读者的反馈，询问为什么原书中没有代码的讲解？这主要是希望防止大量粘贴代码而影响书的阅读，排版较乱，并且如果读者自己按照书来手写代码的话也很不方便，因此，有关代码的内容都放在Github中，读者可以根据自己的需要随意修改**
+**update 2017-7-23：代码添加python3支持，在py3文件夹下下载相应的py3代码，代码在python3.6环境下运行成功**
 
 本代码基于python2.7.13和theano 0.8.2编写，如果你在运行本代码时遇到什么问题，或者有什么疑问，也欢迎随时与我联系: huanganbu@gmail.com 
 
