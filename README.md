@@ -20,7 +20,11 @@ This repository is used to publish source code of my deep learning book
  ```javascript
  pip install libpython
  ``` 
- - CUDA 8.0 (可选). 如果你想将代码放在GPU上进行加速，那么你需要确保你有一块NVIDIA的GPU显卡，并且支持CUDA, 然后在NVIDIA的官方网站上下载安装CUDA toolkit: https://developer.nvidia.com/cuda-downloads  
+ 如果pip install运行错误，可以尝试使用conda install来获取，即：
+  ```javascript
+ conda install mingw libpython
+ ``` 
+ - CUDA 8.0 (可选). 如果你想将代码放在GPU上进行加速，那么你需要确保你有一块NVIDIA的GPU显卡，并且支持CUDA, 然后在NVIDIA的官方网站上下载安装CUDA toolkit: https://developer.nvidia.com/cuda-downloads  
  - 安装Theano 0.8或者更高的版本. 在命令行窗口中输入"pip install theano"，系统就会为你自动安装最新的Theano库
  ```javascript
  pip install theano
